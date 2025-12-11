@@ -28,8 +28,8 @@ Each prompt option consists of two files:
 
 ```
 prompts/chat/
-  ├── qwen3-235B-A22.json
-  ├── qwen3-235B-A22.md
+  ├── qwen3-235b-a22b.json
+  ├── qwen3-235b-a22b.md
   ├── gemini2.5-flash-lite.json
   ├── gemini2.5-flash-lite.md
   ...
@@ -37,12 +37,12 @@ prompts/chat/
 ```
 
 ```json
-// qwen3-235B-A22.json
+// qwen3-235b-a22b.json
 {
   "metadata": {
     "feature": "chat",
     "version": "1.0",
-    "model_key": "qwen3-235B-A22",
+    "model_key": "qwen3-235b-a22b",
     "is_default": true,
     "last_updated": "2025-01-15"
   },
