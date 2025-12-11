@@ -44,7 +44,7 @@ prompts/chat/
     "version": "1.0",
     "model_key": "qwen3-235b-a22b",
     "is_default": true,
-    "last_updated": "2025-01-15"
+    "last_updated": "2025-12-11"
   },
   "config": {
     "temperature": 1.0,
