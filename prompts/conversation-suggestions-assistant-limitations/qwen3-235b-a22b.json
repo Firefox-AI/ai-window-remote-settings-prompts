@@ -2,7 +2,7 @@
   "metadata": {
     "feature": "conversation-suggestions-assistant-limitations",
     "version": "1.0",
-    "model_key": "qwen3-235b-a22b",
+    "model_key": "",
     "is_default": true,
     "last_updated": "2025-12-22"
   },
