@@ -15,11 +15,13 @@ SERVER_LOOKUP = {
     "PROD": PROD_SERVER
 }
 
-def rs_request(method, url, token, json_body=None):
+def rs_request(method, url, token, json_body=None, extra_headers=None):
     headers = {
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json",
     }
+    if extra_headers:
+        headers.update(extra_headers)
     resp = requests.request(method, url, headers=headers, json=json_body, timeout=60)
     return resp
 
@@ -33,7 +35,7 @@ def create_json_record(base, feature, model_name):
     
     json_blob["prompts"] = prompt
     major_version = json_blob["version"].split(".")[0]
-    json_blob["id"] = f"{feature}--{model_name}--v{major_version}"
+    json_blob["id"] = f"{feature}--{model_name.replace('.', '-')}--v{major_version}"  # can't use .'s in ids
     json_blob['parameters'] = json.dumps(json_blob["parameters"])
 
     return json_blob
@@ -69,28 +71,43 @@ def main():
 
     print(records_url, collection_url)
 
-    # Try create (POST). If it already exists, update (PUT).
-    # POST requires wrapper {"data": {...}}.
-    post_resp = rs_request("POST", records_url, token, json_body={"data": record})
+    payload = {"data": record}
 
-    if post_resp.status_code in (200, 201):
-        print(f"Created record id={record_id}")
-    elif post_resp.status_code == 409:
-        put_resp = rs_request("PUT", record_url, token, json_body={"data": record})
-        if put_resp.status_code not in (200, 201):
-            print(f"PUT failed: {put_resp.status_code}\n{put_resp.text}", file=sys.stderr)
+    # PUT-first upsert
+    put_resp = rs_request("PUT", record_url, token, json_body=payload)
+
+    if put_resp.status_code in (200, 201):
+        # if no record exists, the system creates one
+        action = "Created/Updated"
+        print(f"{action} record id={record_id}")
+
+    elif put_resp.status_code in (409, 412):
+        # Optimistic concurrency: need If-Match with current last_modified
+        get_resp = rs_request("GET", record_url, token)
+        if get_resp.status_code != 200:
+            print(f"GET existing record failed: {get_resp.status_code}\n{get_resp.text}", file=sys.stderr)
             sys.exit(1)
+
+        existing = get_resp.json()["data"]
+        last_modified = existing["last_modified"]
+
+        put_resp2 = rs_request(
+            "PUT",
+            record_url,
+            token,
+            json_body=payload,
+            extra_headers={"If-Match": str(last_modified)},
+        )
+        if put_resp2.status_code not in (200, 201):
+            print(f"PUT (If-Match) failed: {put_resp2.status_code}\n{put_resp2.text}", file=sys.stderr)
+            sys.exit(1)
+
         print(f"Updated record id={record_id}")
+
     else:
-        print(f"POST failed: {post_resp.status_code}\n{post_resp.text}", file=sys.stderr)
+        print(f"PUT failed: {put_resp.status_code}\n{put_resp.text}", file=sys.stderr)
         sys.exit(1)
 
-    if args.request_review:
-        patch_resp = rs_request("PATCH", collection_url, token, json_body={"data": {"status": "to-review"}})
-        if patch_resp.status_code not in (200, 201):
-            print(f"PATCH failed: {patch_resp.status_code}\n{patch_resp.text}", file=sys.stderr)
-            sys.exit(1)
-        print("Requested review: collection moved to to-review")
 
 
 if __name__ == "__main__":

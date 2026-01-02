@@ -11,6 +11,14 @@ on:
         description: "DEV or PROD"
         required: true
         default: "DEV"
+      feature:
+        description: "Feature directory under prompts/, e.g. summarizer"
+        required: true
+        type: string
+      model_name:
+        description: "Model name (as used in filenames), e.g. qwen3-0.6b or 2.5"
+        required: true
+        type: string
 
 jobs:
   push:
@@ -19,7 +27,7 @@ jobs:
       contents: read
 
     env:
-      RS_ENV: DEV               
+      # default value for push; we can overwrite with workflow_dispatch
       RS_BUCKET: main-workspace
       RS_COLLECTION: ai-window-prompts
 
@@ -39,13 +47,21 @@ jobs:
 
       - name: Push changed prompts to Remote Settings
         env:
-          # Store as repo secret:
-          #   RS_TOKEN_DEV = raw token (no "Bearer ")
           RS_TOKEN_DEV: ${{ secrets.RS_TOKEN_DEV }}
           RS_TOKEN_PROD: ${{ secrets.RS_TOKEN_PROD }}
           BEFORE: ${{ github.event.before }}
           AFTER: ${{ github.sha }}
+          RS_ENV: ${{ github.event_name == 'workflow_dispatch' && inputs.env || 'DEV' }}
+          FEATURE: ${{ inputs.feature }}
+          MODEL_NAME: ${{ inputs.model_name }}
         run: |
+          set -euo pipefail
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            # Manual mode: push exactly one (feature, model_name) from main
+            ARGS=(--env "$RS_ENV" --bucket "$RS_BUCKET" --collection "$RS_COLLECTION" --feature "$FEATURE" --model_name "$MODEL_NAME")
+            python remote_settings/push_to_remote_settings.py "${ARGS[@]}"
+          else
           python remote_settings/push_changes.py \
             --before "$BEFORE" \
             --after "$AFTER" \
@@ -53,3 +69,4 @@ jobs:
             --bucket "$RS_BUCKET" \
             --collection "$RS_COLLECTION" \
             --request-review
+          fi
