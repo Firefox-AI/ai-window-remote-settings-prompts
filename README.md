@@ -75,6 +75,7 @@ This section lists important rules to follow when updating PROD remote settings 
 3. When incrementing a new minor version, **edit** the existing record (e.g., v1.0 -> v1.1 updates the same record).
 4. Only keep the latest minor version for each major version to avoid accumulating unnecessary historical data and reducing network transfer overhead.
 5. For major version increments, first update remote settings with the new major version, then update the local config's major version reference and fallback prompts in MC to match.
+6. For each feature & major version combination, only one model should be set as default (`is_default === true`).
 
 # Prompt Owners
 
