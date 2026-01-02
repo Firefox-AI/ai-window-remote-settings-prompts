@@ -61,7 +61,7 @@ def main():
         sys.exit(2)
 
     base_path = Path("./prompts")
-    record = create_json_record(base_path, args.feature, args.model_name)
+    record = create_json_record(base_path, args.feature, args.version, args.model_name)
     record_id = record["id"]
 
     base = server.rstrip("/")

@@ -16,7 +16,11 @@ on:
         required: true
         type: string
       model_name:
-        description: "Model name (as used in filenames), e.g. qwen3-0.6b or 2.5"
+        description: "Model name (as used in filenames), e.g. gpt-oss-120b"
+        required: true
+        type: string
+      version:
+        description: "Prompt version (should match directory structure, e.g. v1)"
         required: true
         type: string
 
@@ -54,12 +58,13 @@ jobs:
           RS_ENV: ${{ github.event_name == 'workflow_dispatch' && inputs.env || 'DEV' }}
           FEATURE: ${{ inputs.feature }}
           MODEL_NAME: ${{ inputs.model_name }}
+          VERSION: ${{ inputs.version }}
         run: |
           set -euo pipefail
 
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             # Manual mode: push exactly one (feature, model_name) from main
-            ARGS=(--env "$RS_ENV" --bucket "$RS_BUCKET" --collection "$RS_COLLECTION" --feature "$FEATURE" --model_name "$MODEL_NAME")
+            ARGS=(--env "$RS_ENV" --bucket "$RS_BUCKET" --collection "$RS_COLLECTION" --feature "$FEATURE" --model_name "$MODEL_NAME" --version "$VERSION")
             python remote_settings/push_to_remote_settings.py "${ARGS[@]}"
           else
           python remote_settings/push_changes.py \
