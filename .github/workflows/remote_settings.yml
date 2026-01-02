@@ -1,0 +1,49 @@
+name: Push Remote Settings (changed prompts)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - prompts/**
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    env:
+      RS_ENV: DEV               
+      RS_BUCKET: main-workspace
+      RS_COLLECTION: ai-window-prompts
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # required to diff github.event.before..github.sha
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Push changed prompts to Remote Settings
+        env:
+          # Store as repo secret:
+          #   RS_TOKEN_DEV = raw token (no "Bearer ")
+          RS_TOKEN_DEV: ${{ secrets.RS_TOKEN_DEV }}
+          RS_TOKEN_PROD: ${{ secrets.RS_TOKEN_PROD }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          python remote_settings/push_changed.py \
+            --before "$BEFORE" \
+            --after "$AFTER" \
+            --env "$RS_ENV" \
+            --bucket "$RS_BUCKET" \
+            --collection "$RS_COLLECTION" \
+            --request-review
