@@ -64,7 +64,7 @@ def main():
     if args.request_review:
         # Call once more on the last pair just to do the PATCH.
         # (Simplest: your push_one.py already knows how to PATCH.)
-        feature, model_name = pairs[-1]
+        feature, model_name, version = pairs[-1]
         cmd = [
             sys.executable, "remote_settings/push_to_remote_settings.py",
             "--env", args.env,
