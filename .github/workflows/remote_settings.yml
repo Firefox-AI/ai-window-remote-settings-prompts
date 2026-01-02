@@ -5,6 +5,12 @@ on:
     branches: [ main ]
     paths:
       - prompts/**
+  workflow_dispatch:
+    inputs:
+      env:
+        description: "DEV or PROD"
+        required: true
+        default: "DEV"
 
 jobs:
   push:
