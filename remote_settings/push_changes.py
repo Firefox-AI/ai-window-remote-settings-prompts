@@ -6,7 +6,9 @@ import subprocess
 import sys
 from typing import Set, Tuple
 
-PAIR_RE = re.compile(r"^prompts/([^/]+)/([^/.]+)\.(json|md)$")
+# PAIR_RE = re.compile(r"^prompts/([^/]+)/([^/.]+)\.(json|md)$")
+PAIR_RE = re.compile(r"^prompts/([^/]+)/(.+?)\.(json|md)$")
+
 
 def git_changed_files(before: str, after: str):
     out = subprocess.check_output(["git", "diff", "--name-only", before, after], text=True)
@@ -32,6 +34,7 @@ def main():
     args = ap.parse_args()
 
     changed = git_changed_files(args.before, args.after)
+    print("Files changed: ", "\n- ".join(changed))
     pairs = sorted(extract_pairs(changed))
 
     if not pairs:
