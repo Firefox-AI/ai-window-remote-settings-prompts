@@ -34,8 +34,7 @@ def create_json_record(base, feature, version, model_name):
         prompt = f.read().strip()
     
     json_blob["prompts"] = prompt
-    major_version = json_blob["version"].split(".")[0]
-    json_blob["id"] = f"{feature}--{model_name.replace('.', '-')}--v{major_version}"  # can't use .'s in ids
+    json_blob["id"] = f"{feature}--{model_name.replace('.', '-')}--{version}"  # can't use .'s in ids
     json_blob['parameters'] = json.dumps(json_blob["parameters"])
 
     return json_blob
