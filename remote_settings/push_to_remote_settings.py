@@ -30,7 +30,7 @@ def create_json_record(base, feature, version, model_name):
     with open(base / feature / version / f"{model_name}.json", "r") as f:
         json_blob = json.load(f)
 
-    with open(base / feature / f"{model_name}.md", "r") as f:
+    with open(base / feature / version / f"{model_name}.md", "r") as f:
         prompt = f.read().strip()
     
     json_blob["prompts"] = prompt
