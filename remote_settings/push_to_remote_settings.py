@@ -8,7 +8,7 @@ import requests
 
 
 DEV_SERVER = "https://remote-settings-dev.allizom.org/v1"
-PROD_SERVER = "https://firefox.settings.services.mozilla.com/v1"
+PROD_SERVER = "https://remote-settings.mozilla.org/v1"
 
 SERVER_LOOKUP = {
     "DEV": DEV_SERVER,

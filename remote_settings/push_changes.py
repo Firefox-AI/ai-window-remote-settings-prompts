@@ -12,9 +12,9 @@ def extract_pairs(files):
     pairs = set()
     for f in files:
         p = PurePosixPath(f)
-        if len(p.parts) == 3 and p.parts[0] == "prompts" and p.suffix in (".json", ".md"):
+        if len(p.parts) == 4 and p.parts[0] == "prompts" and p.suffix in (".json", ".md"):
             feature = p.parts[1]
-            model_name = p.stem   # handles dots correctly
+            model_name = p.stem
             pairs.add((feature, model_name))
     return sorted(pairs)
 
