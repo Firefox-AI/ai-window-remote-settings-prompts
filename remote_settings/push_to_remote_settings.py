@@ -26,8 +26,8 @@ def rs_request(method, url, token, json_body=None, extra_headers=None):
     return resp
 
 
-def create_json_record(base, feature, model_name):
-    with open(base / feature / f"{model_name}.json", "r") as f:
+def create_json_record(base, feature, version, model_name):
+    with open(base / feature / version / f"{model_name}.json", "r") as f:
         json_blob = json.load(f)
 
     with open(base / feature / f"{model_name}.md", "r") as f:
@@ -49,6 +49,7 @@ def main():
     ap.add_argument("--request-review", action="store_true")
     ap.add_argument("--feature", required=True)
     ap.add_argument("--model_name", required=True)
+    ap.add_argument("--version", default="v1")
     args = ap.parse_args()
 
     ENV = args.env.upper()

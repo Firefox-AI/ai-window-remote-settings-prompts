@@ -14,8 +14,9 @@ def extract_pairs(files):
         p = PurePosixPath(f)
         if len(p.parts) == 4 and p.parts[0] == "prompts" and p.suffix in (".json", ".md"):
             feature = p.parts[1]
+            version = p.parts[2]
             model_name = p.stem
-            pairs.add((feature, model_name))
+            pairs.add((feature, model_name, version))
     return sorted(pairs)
 
 
@@ -43,11 +44,11 @@ def main():
         return
 
     print("Changed pairs:")
-    for feature, model_name in pairs:
-        print(f" - {feature}/{model_name}")
+    for feature, model_name, version in pairs:
+        print(f" - {feature}/{model_name} - {version}")
 
     # Run your existing script once per pair
-    for feature, model_name in pairs:
+    for feature, model_name, version in pairs:
         cmd = [
             sys.executable, "remote_settings/push_to_remote_settings.py",
             "--env", args.env,
@@ -55,6 +56,7 @@ def main():
             "--collection", args.collection,
             "--feature", feature,
             "--model_name", model_name,
+            "--version", version
         ]
         # Only request review ONCE at the very end (less churn)
         subprocess.check_call(cmd)
@@ -70,6 +72,7 @@ def main():
             "--collection", args.collection,
             "--feature", feature,
             "--model_name", model_name,
+            "--version", version,
             "--request-review",
         ]
         subprocess.check_call(cmd)
