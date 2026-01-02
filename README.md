@@ -11,15 +11,16 @@ Data in this repo should be viewed as the main source of truth.
 ```
 ai-window-remote-settings-prompts/
 └── prompts/
-    ├── <feature_1>/
-        ├── <model_1>.md
-        ├── <model_1>.json
+    ├── <major_version_number>
+        ├── <feature_1>/
+            ├── <model_1>.md
+            ├── <model_1>.json
+            ...
+        ├── <feature_2>/
+            ├── <model_1>.md
+            ├── <model_1>.json
+            ...
         ...
-    ├── <feature_2>/
-        ├── <model_1>.md
-        ├── <model_1>.json
-        ...
-    ...
 ```
 
 Prompts are organized using the pattern: `prompts/<feature>/<model>.{json,md}`.
@@ -34,21 +35,22 @@ Folder:
 ```
 prompts/
   chat/
-    ├── gemini2.5-flash-lite.json
-    ├── gemini2.5-flash-lite.md
-    ├── gpt-oss-120b.json
-    ├── gpt-oss-120b.md
-    ├── qwen3-235b-a22b-instruct-2507-maas.json
-    ├── qwen3-235b-a22b-instruct-2507-maas.md
+    v1/
+      ├── gemini2.5-flash-lite.json
+      ├── gemini2.5-flash-lite.md
+      ├── gpt-oss-120b.json
+      ├── gpt-oss-120b.md
+      ├── qwen3-235b-a22b-instruct-2507-maas.json
+      ├── qwen3-235b-a22b-instruct-2507-maas.md
+    ...
   ...
-...
 ```
 
 Config:
 ```json
 {
   "feature": "chat",
-  "version": "1.0",
+  "version": "1.0",  # <major_version>.<minor_minor>
   "model": "qwen3-235b-a22b-instruct-2507-maas",
   "is_default": true,
   "parameters": {
@@ -71,7 +73,7 @@ This section lists important rules to follow when updating PROD remote settings 
 ## Rules
 
 1. Remote settings must contain the **LATEST** minor version for **EACH** combination of major version, feature, and model.
-2. When incrementing a new major version, **create** a new record (e.g., v1.x -> v2.0 creates a new record while keeping v1.x).
+2. When incrementing a new major version, **create** a new version directory along with a new record (e.g., v1.x -> v2.0 creates a new directory and record while keeping v1.x). This is necessary to maintain support for previous versions. All breaking features (e.g. the addition of new tools) should get a new major version number.
 3. When incrementing a new minor version, **edit** the existing record (e.g., v1.0 -> v1.1 updates the same record).
 4. Only keep the latest minor version for each major version to avoid accumulating unnecessary historical data and reducing network transfer overhead.
 5. For major version increments, first update remote settings with the new major version, then update the local config's major version reference and fallback prompts in MC to match.
