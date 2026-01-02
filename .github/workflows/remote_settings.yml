@@ -46,7 +46,7 @@ jobs:
           BEFORE: ${{ github.event.before }}
           AFTER: ${{ github.sha }}
         run: |
-          python remote_settings/push_changed.py \
+          python remote_settings/push_changes.py \
             --before "$BEFORE" \
             --after "$AFTER" \
             --env "$RS_ENV" \
