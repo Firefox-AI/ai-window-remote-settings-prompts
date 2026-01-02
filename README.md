@@ -12,17 +12,17 @@ Data in this repo should be viewed as the main source of truth.
 ai-window-remote-settings-prompts/
 └── prompts/
     ├── <feature_1>/
-        ├── <model_key_1>.md
-        ├── <model_key_1>.json
+        ├── <model_1>.md
+        ├── <model_1>.json
         ...
     ├── <feature_2>/
-        ├── <model_key_1>.md
-        ├── <model_key_1>.json
+        ├── <model_1>.md
+        ├── <model_1>.json
         ...
     ...
 ```
 
-Prompts are organized using the pattern: `prompts/<feature>/<model_key>.{json,md}`.
+Prompts are organized using the pattern: `prompts/<feature>/<model>.{json,md}`.
 
 Each prompt option consists of two files:
 - **`.json` file**: contains `metadata` and generation `parameters`
@@ -38,8 +38,8 @@ prompts/
     ├── gemini2.5-flash-lite.md
     ├── gpt-oss-120b.json
     ├── gpt-oss-120b.md
-    ├── qwen3-235b-a22b.json
-    ├── qwen3-235b-a22b.md
+    ├── qwen3-235b-a22b-instruct-2507-maas.json
+    ├── qwen3-235b-a22b-instruct-2507-maas.md
   ...
 ...
 ```
@@ -49,7 +49,7 @@ Config:
 {
   "feature": "chat",
   "version": "1.0",
-  "model_key": "qwen3-235b-a22b",
+  "model": "qwen3-235b-a22b-instruct-2507-maas",
   "is_default": true,
   "parameters": {
     "temperature": 1.0

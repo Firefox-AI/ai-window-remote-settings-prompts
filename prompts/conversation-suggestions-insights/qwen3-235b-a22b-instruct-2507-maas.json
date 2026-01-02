@@ -1,7 +1,7 @@
 {
   "feature": "conversation-suggestions-insights",
   "version": "1.0",
-  "model_key": "",
+  "model": "",
   "is_default": true,
   "parameters": {},
   "additional_components": [],

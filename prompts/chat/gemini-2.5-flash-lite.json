@@ -1,7 +1,7 @@
 {
   "feature": "chat",
   "version": "1.0",
-  "model_key": "gemini-2.5-flash-lite",
+  "model": "gemini-2.5-flash-lite",
   "is_default": true,
   "parameters": {
     "temperature": 1.0

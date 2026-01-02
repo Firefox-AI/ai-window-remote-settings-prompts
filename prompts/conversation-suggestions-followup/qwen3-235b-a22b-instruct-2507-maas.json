@@ -1,7 +1,7 @@
 {
-  "feature": "conversation-suggestions-sidebar-starter",
+  "feature": "conversation-suggestions-followup",
   "version": "1.0",
-  "model_key": "qwen3-235b-a22b",
+  "model": "qwen3-235b-a22b-instruct-2507-maas",
   "is_default": true,
   "parameters": {},
   "additional_components": ["conversation-suggestions-assistant-limitations", "conversation-suggestions-insights"],

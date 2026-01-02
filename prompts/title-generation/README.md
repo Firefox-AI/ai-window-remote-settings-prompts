@@ -1,3 +1,0 @@
-# Owner
-
-Mohan Zhang
