@@ -5,23 +5,24 @@ import re
 import subprocess
 import sys
 from typing import Set, Tuple
+from pathlib import PurePosixPath
 
-# PAIR_RE = re.compile(r"^prompts/([^/]+)/([^/.]+)\.(json|md)$")
-PAIR_RE = re.compile(r"^prompts/([^/]+)/(.+?)\.(json|md)$")
+
+def extract_pairs(files):
+    pairs = set()
+    for f in files:
+        p = PurePosixPath(f)
+        if len(p.parts) == 3 and p.parts[0] == "prompts" and p.suffix in (".json", ".md"):
+            feature = p.parts[1]
+            model_name = p.stem   # handles dots correctly
+            pairs.add((feature, model_name))
+    return sorted(pairs)
 
 
 def git_changed_files(before: str, after: str):
     out = subprocess.check_output(["git", "diff", "--name-only", before, after], text=True)
     return [line.strip() for line in out.splitlines() if line.strip()]
 
-def extract_pairs(files) -> Set[Tuple[str, str]]:
-    pairs = set()
-    for f in files:
-        m = PAIR_RE.match(f)
-        if m:
-            feature, model_name, _ext = m.groups()
-            pairs.add((feature, model_name))
-    return pairs
 
 def main():
     ap = argparse.ArgumentParser()
