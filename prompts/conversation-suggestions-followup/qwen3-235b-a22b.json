@@ -7,5 +7,5 @@
     "last_updated": "2025-12-22"
   },
   "additional_components": ["conversation-suggestions-assistant-limitations", "conversation-suggestions-insights"],
-  "config": {}
+  "parameters": {}
 }

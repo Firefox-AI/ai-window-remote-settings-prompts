@@ -52,3 +52,14 @@ prompts/chat/
   }
 }
 ```
+
+## Prompt Owners
+
+| Feature | Owner |
+|---------|-------|
+| chat | Tom Zhang, Mohan Zhang |
+| conversation-suggestions-assistant-limitations | Molly Shillabeer |
+| conversation-suggestions-followup | Molly Shillabeer |
+| conversation-suggestions-insights | Molly Shillabeer |
+| conversation-suggestions-sidebar-starter | Molly Shillabeer |
+| title-generation | Mohan Zhang |

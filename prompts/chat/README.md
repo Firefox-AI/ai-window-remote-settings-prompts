@@ -1,3 +1,0 @@
-# Owner
-
-Tom Zhang
