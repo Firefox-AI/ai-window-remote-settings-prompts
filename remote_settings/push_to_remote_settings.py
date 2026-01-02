@@ -33,9 +33,10 @@ def create_json_record(base, feature, model_name):
     
     json_blob["prompts"] = prompt
     major_version = json_blob["version"].split(".")[0]
+    json_blob["id"] = f"{feature}--{model_name}--v{major_version}"
     json_blob['parameters'] = json.dumps(json_blob["parameters"])
 
-    return json_blob, f"{feature}--{model_name}--v{major_version}"
+    return json_blob
 
 
 def main():
@@ -58,7 +59,8 @@ def main():
         sys.exit(2)
 
     base_path = Path("./prompts")
-    record, record_id = create_json_record(base_path, args.feature, args.model_name)
+    record = create_json_record(base_path, args.feature, args.model_name)
+    record_id = record["id"]
 
     base = server.rstrip("/")
     records_url = f"{base}/buckets/{args.bucket}/collections/{args.collection}/records"
