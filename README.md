@@ -1,8 +1,12 @@
 # Firefox AI Window Remote Settings Prompts
 
-This repository manages system prompts and generation configurations for Firefox's AI Window features using Remote Settings.
+This repository stores and manages system prompts and generation configurations for Firefox's AI Window features using Remote Settings.
 
-## Repository & File Structure
+Data in this repo should be viewed as the main source of truth.
+
+# Repository & File Structure
+
+## Overall
 
 ```
 ai-window-remote-settings-prompts/
@@ -21,41 +25,62 @@ ai-window-remote-settings-prompts/
 Prompts are organized using the pattern: `prompts/<feature>/<model_key>.{json,md}`.
 
 Each prompt option consists of two files:
-- **`.json` file**: contains `metadata` and generation `config`
+- **`.json` file**: contains `metadata` and generation `parameters`
 - **`.md` file**: contains the actual system prompt text in markdown format
 
 ### Example: Chat Feature
 
+Folder:
 ```
-prompts/chat/
-  ├── qwen3-235b-a22b.json
-  ├── qwen3-235b-a22b.md
-  ├── gemini2.5-flash-lite.json
-  ├── gemini2.5-flash-lite.md
+prompts/
+  chat/
+    ├── gemini2.5-flash-lite.json
+    ├── gemini2.5-flash-lite.md
+    ├── gpt-oss-120b.json
+    ├── gpt-oss-120b.md
+    ├── qwen3-235b-a22b.json
+    ├── qwen3-235b-a22b.md
   ...
 ...
 ```
 
+Config:
 ```json
-// qwen3-235b-a22b.json
 {
-  "metadata": {
-    "feature": "chat",
-    "version": "1.0",
-    "model_key": "qwen3-235b-a22b",
-    "is_default": true,
-    "last_updated": "2025-12-11"
+  "feature": "chat",
+  "version": "1.0",
+  "model_key": "qwen3-235b-a22b",
+  "is_default": true,
+  "parameters": {
+    "temperature": 1.0
   },
-  "config": {
-    "temperature": 1.0,
-    "top_p": 0.001
-  }
+  "last_updated": "2026-01-02",
+  "prompts": "<to_be_inserted_on_the_fly>"
 }
 ```
 
-## Prompt Owners
+# Remote Settings Update Principal
 
-| Feature | Owner |
+This section lists important rules to follow when updating PROD remote settings to ensure the correctness of the data in the remote.
+
+## Terminology
+
+1. **Major version**: Increment the major version when making significant changes to prompt content or functionality that would break compatibility with the current version or require code changes.
+2. **Minor version**: Increment the minor version for minor prompt tuning and parameter updates that don't significantly impact the prompt's purpose or require code changes.
+
+## Rules
+
+1. Remote settings must contain the **LATEST** minor version for **EACH** combination of major version, feature, and model.
+2. When incrementing a new major version, **create** a new record (e.g., v1.x -> v2.0 creates a new record while keeping v1.x).
+3. When incrementing a new minor version, **edit** the existing record (e.g., v1.0 -> v1.1 updates the same record).
+4. Only keep the latest minor version for each major version to avoid accumulating unnecessary historical data and reducing network transfer overhead.
+5. For major version increments, first update remote settings with the new major version, then update the local config's major version reference and fallback prompts in MC to match.
+
+# Prompt Owners
+
+Please refer to the following table for the owners of each prompt and config.
+
+| Feature | Owners |
 |---------|-------|
 | chat | Tom Zhang, Mohan Zhang |
 | conversation-suggestions-assistant-limitations | Molly Shillabeer |

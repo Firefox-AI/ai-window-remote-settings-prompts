@@ -1,10 +1,9 @@
 {
-  "metadata": {
-    "feature": "conversation-suggestions-insights",
-    "version": "1.0",
-    "model_key": "",
-    "is_default": true,
-    "last_updated": "2025-12-22"
-  },
-  "parameters": {}
+  "feature": "conversation-suggestions-insights",
+  "version": "1.0",
+  "model_key": "",
+  "is_default": true,
+  "parameters": {},
+  "additional_components": [],
+  "last_updated": "2026-01-02"
 }

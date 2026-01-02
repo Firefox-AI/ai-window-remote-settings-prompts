@@ -1,11 +1,9 @@
 {
-  "metadata": {
-    "feature": "conversation-suggestions-followup",
-    "version": "1.0",
-    "model_key": "qwen3-235b-a22b",
-    "is_default": true,
-    "last_updated": "2025-12-22"
-  },
+  "feature": "conversation-suggestions-followup",
+  "version": "1.0",
+  "model_key": "qwen3-235b-a22b",
+  "is_default": true,
+  "parameters": {},
   "additional_components": ["conversation-suggestions-assistant-limitations", "conversation-suggestions-insights"],
-  "parameters": {}
+  "last_updated": "2026-01-02"
 }
