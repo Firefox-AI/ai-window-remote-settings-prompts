@@ -13,7 +13,7 @@ Open Tabs:
 {open_tabs}
 
 ========
-${assistantLimitations}
+{assistant_limitations}
 
 ========
 Task:

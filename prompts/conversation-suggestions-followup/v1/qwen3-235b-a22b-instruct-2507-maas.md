@@ -13,7 +13,7 @@ Conversation History (latest last):
 {conversation}
 
 ========
-${assistantLimitations}
+{assistant_limitations}
 
 ========
 Generate {n} suggested next responses or queries that the user might want to message next.
