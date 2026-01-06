@@ -1,9 +1,9 @@
 {
-  "feature": "conversation-suggestions-insights",
+  "feature": "conversation-suggestions-memories",
   "version": "1.0",
   "model": "",
   "is_default": true,
   "parameters": {},
   "additional_components": [],
-  "last_updated": "2026-01-02"
+  "last_updated": "2026-01-06"
 }
