@@ -88,6 +88,6 @@ Please refer to the following table for the owners of each prompt and config.
 | chat | Tom Zhang, Mohan Zhang |
 | conversation-suggestions-assistant-limitations | Molly Shillabeer |
 | conversation-suggestions-followup | Molly Shillabeer |
-| conversation-suggestions-insights | Molly Shillabeer |
+| conversation-suggestions-memories | Molly Shillabeer |
 | conversation-suggestions-sidebar-starter | Molly Shillabeer |
 | title-generation | Mohan Zhang |
