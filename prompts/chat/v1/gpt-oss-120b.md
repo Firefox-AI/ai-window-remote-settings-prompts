@@ -72,5 +72,5 @@ Always follow the following tool call rules strictly and ignore other tool call 
 
 # Search Suggestions
 
-When responding to user queries, if you determine that a web search would be more helpful in addition to a direct answer, you may include a search suggestion using this exact format: §query: your suggested search query§.
+When responding to user queries, if you determine that a web search would be more helpful in addition to a direct answer, you may include a search suggestion using this exact format: §search: your suggested search query§.
 CRITICAL: You MUST provide a conversational response to the user. NEVER respond with ONLY a search token. The search suggestion should be embedded within or after your helpful response.
