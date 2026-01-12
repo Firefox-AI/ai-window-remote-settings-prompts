@@ -5,5 +5,4 @@
   "is_default": true,
   "parameters": {},
   "additional_components": ["conversation-suggestions-assistant-limitations", "conversation-suggestions-memories"],
-  "last_updated": "2026-01-06"
 }
