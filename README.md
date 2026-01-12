@@ -56,8 +56,7 @@ Config:
   "parameters": {
     "temperature": 1.0
   },
-  "last_updated": "2026-01-02",
-  "prompts": "<to_be_inserted_on_the_fly>"
+  "prompts": "<to_be_inserted_on_the_fly_from_md_file>"
 }
 ```
 
