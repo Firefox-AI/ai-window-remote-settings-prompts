@@ -46,7 +46,7 @@ prompts/
   ...
 ```
 
-<model_name.json>:
+`model_name.json`:
 ```json
 {
   "feature": "chat",
@@ -58,7 +58,7 @@ prompts/
   },
 }
 ```
-<model_name.md>:
+`model_name.md`:
 ```
 You are a helpful assistant ...
 ```
