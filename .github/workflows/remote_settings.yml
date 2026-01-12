@@ -1,10 +1,6 @@
 name: Push Remote Settings (changed prompts)
 
 on:
-  push:
-    branches: [ main ]
-    paths:
-      - prompts/**
   workflow_dispatch:
     inputs:
       env:
