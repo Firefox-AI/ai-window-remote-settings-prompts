@@ -4,5 +4,5 @@
   "model": "qwen3-235b-a22b-instruct-2507-maas",
   "is_default": true,
   "parameters": {},
-  "additional_components": [],
+  "additional_components": []
 }
