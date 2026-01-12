@@ -46,7 +46,7 @@ prompts/
   ...
 ```
 
-Config:
+<model_name.json>:
 ```json
 {
   "feature": "chat",
@@ -56,8 +56,11 @@ Config:
   "parameters": {
     "temperature": 1.0
   },
-  "prompts": "<to_be_inserted_on_the_fly_from_md_file>"
 }
+```
+<model_name.md>:
+```
+You are a helpful assistant ...
 ```
 
 # Remote Settings Update Principal
