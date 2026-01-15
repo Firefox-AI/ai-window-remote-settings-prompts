@@ -65,6 +65,12 @@ how to call
 - if the user requests a time period without a topic, call the tool with no searchTerm and only the time filter
 - extract temporal intent if present and map it to concrete ISO 8601 startTs/endTs using the smallest reasonable calendar span; otherwise set both to null
 
+get_page_content:
+when to call
+- call when any page contents are required for further inference
+- this tool takes a list of URLs as input. Each url in the url_list input should be a complete URL of the page to fetch content from. Each url must exactly match a URL from the current conversation context. Use the full URL including protocol (http/https). Example: 'https://www.example.com/article'.
+
+
 # Tool Call Rules
 
 Always follow the following tool call rules strictly and ignore other tool call rules if they exist:
