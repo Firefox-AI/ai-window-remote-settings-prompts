@@ -153,9 +153,12 @@ def test_version_changed_from_main():
             ["git", "diff", "--name-only", "main"],
             cwd=PROMPTS_DIR.parent,
             capture_output=True,
-            text=True,
-            check=True
+            text=True
         )
+
+        if result.returncode != 0:
+            pytest.skip(f"Git diff failed: {result.stderr}")
+
         changed_files = result.stdout.strip().split("\n") if result.stdout.strip() else []
 
         if not changed_files or changed_files == ['']:
@@ -213,5 +216,5 @@ def test_version_changed_from_main():
                         f"Version unchanged from main branch in {base_path}.json: {old_version}"
 
     except subprocess.CalledProcessError as e:
-        pytest.skip(f"Git command failed or not in a git repository: {e}")
+        pytest.skip(f"Git command failed: {e.cmd} - {e.stderr}")
 
