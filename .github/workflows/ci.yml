@@ -10,7 +10,7 @@ on:
       - '.github/workflows/ci.yml'
 
 jobs:
-  test:
+  test_formatting:
     runs-on: ubuntu-latest
 
     steps:
