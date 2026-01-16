@@ -1,7 +1,7 @@
 {
   "feature": "conversation-suggestions-memories",
   "version": "1.0",
-  "model": "",
+  "model": "qwen3-235b-a22b-instruct-2507-maas",
   "is_default": true,
   "parameters": {},
   "additional_components": []

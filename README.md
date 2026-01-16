@@ -93,3 +93,7 @@ Please refer to the following table for the owners of each prompt and config.
 | conversation-suggestions-memories | Molly Shillabeer |
 | conversation-suggestions-sidebar-starter | Molly Shillabeer |
 | title-generation | Mohan Zhang |
+
+# Remote Settings Updates
+
+Updates to remote-settings itself will occur via an hourly cronjob running the code in the [remote-settings-ai-window-prompts-updater](https://github.com/mozilla/remote-settings-ai-window-prompts-updater) repository. 
