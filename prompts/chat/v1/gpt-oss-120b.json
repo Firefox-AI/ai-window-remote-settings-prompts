@@ -2,7 +2,7 @@
   "feature": "chat",
   "version": "1.0",
   "model": "gpt-oss-120b",
-  "is_default": false,
+  "is_default": true,
   "parameters": {
     "temperature": 1.0
   },
