@@ -31,4 +31,4 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest test.py -v --tb=short
+          pytest test.py -vv --tb=long -s
