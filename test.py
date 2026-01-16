@@ -213,5 +213,6 @@ def test_version_changed_from_main():
                         f"Version unchanged from main branch in {base_path}.json: {old_version}"
 
     except subprocess.CalledProcessError as e:
+        print("***: ", e)
         pytest.skip(f"Git command failed or not in a git repository: {e}")
 
