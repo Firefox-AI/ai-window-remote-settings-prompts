@@ -217,4 +217,3 @@ def test_version_changed_from_main():
 
     except subprocess.CalledProcessError as e:
         pytest.skip(f"Git command failed: {e.cmd} - {e.stderr}")
-
