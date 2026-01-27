@@ -1,0 +1,1 @@
+Classify the user's message into one more more high-level Categories and Intents. Return ONLY valid JSON per schema.
