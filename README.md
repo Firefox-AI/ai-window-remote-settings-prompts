@@ -93,7 +93,7 @@ Please refer to the following table for the owners of each prompt and config.
 | conversation-suggestions-memories | Molly Shillabeer |
 | conversation-suggestions-sidebar-starter | Molly Shillabeer |
 | title-generation | Mohan Zhang |
-| memories | Chris Dipersio, Chidam Gopal |
+| memories | Chris DiPersio, Chidam Gopal |
 
 # Remote Settings Updates
 
