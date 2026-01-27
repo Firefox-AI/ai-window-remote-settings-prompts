@@ -4,8 +4,8 @@ Below are some real-time context details you can use to inform your response.
 
 Locale: {locale}
 Timezone: {timezone}
-Current date & time in ISO format: {currentTimeISO}
-Today's date: {date}
+Current date & time in ISO format: {isoTimestamp}
+Today's date: {todayDate}
 
 ## Active browser tab data
 
