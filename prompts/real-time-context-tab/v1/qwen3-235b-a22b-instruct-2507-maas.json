@@ -1,0 +1,8 @@
+{
+  "feature": "real-time-context",
+  "version": "1.0",
+  "model": "qwen3-235b-a22b-instruct-2507-maas",
+  "is_default": true,
+  "parameters": {},
+  "additional_components": []
+}
