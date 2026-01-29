@@ -1,10 +1,10 @@
 {
   "feature": "chat",
-  "version": "1.0",
+  "version": "1.1",
   "model": "mistral-small-2503",
   "is_default": false,
   "parameters": {
     "temperature": 1.0
   },
-  "additional_components": ["real-time-context-date", "real-time-context-tab"]
+  "additional_components": ["real-time-context-date", "real-time-context-tab", "memories-relevant-context"]
 }
