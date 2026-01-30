@@ -5,19 +5,25 @@ from pathlib import Path
 
 PROMPTS_DIR = Path(__file__).parent / "prompts"
 
+
 def test_directory_structure():
     """Test that prompts directory has correct structure: feature/version/files"""
     assert PROMPTS_DIR.exists(), f"Prompts directory does not exist: {PROMPTS_DIR}"
 
     for feature_dir in PROMPTS_DIR.iterdir():
-        assert feature_dir.is_dir(), f"{PROMPTS_DIR} contains non-directory file: {feature_dir}"
+        assert (
+            feature_dir.is_dir()
+        ), f"{PROMPTS_DIR} contains non-directory file: {feature_dir}"
 
         for major_version_dir in feature_dir.iterdir():
-            assert major_version_dir.is_dir(), f"{feature_dir} contains non-directory file: {major_version_dir}"
+            assert (
+                major_version_dir.is_dir()
+            ), f"{feature_dir} contains non-directory file: {major_version_dir}"
 
             # Check that version directories follow naming convention (e.g., v1, v2)
-            assert major_version_dir.name.startswith("v"), \
-                f"Version directory should start with 'v': {major_version_dir.name}"
+            assert major_version_dir.name.startswith(
+                "v"
+            ), f"Version directory should start with 'v': {major_version_dir.name}"
 
 
 def test_paired_files_exist():
@@ -37,12 +43,16 @@ def test_paired_files_exist():
 
             # Each model should have both .json and .md
             for model_name, suffixes in files_by_stem.items():
-                assert ".json" in suffixes, \
-                    f"Missing .json file for {model_name} in {major_version_dir}"
-                assert ".md" in suffixes, \
-                    f"Missing .md file for {model_name} in {major_version_dir}"
-                assert len(suffixes) == 2, \
-                    f"Unexpected files for {model_name} in {major_version_dir}: {suffixes}"
+                assert (
+                    ".json" in suffixes
+                ), f"Missing .json file for {model_name} in {major_version_dir}"
+                assert (
+                    ".md" in suffixes
+                ), f"Missing .md file for {model_name} in {major_version_dir}"
+                assert (
+                    len(suffixes) == 2
+                ), f"Unexpected files for {model_name} in {major_version_dir}: {suffixes}"
+
 
 def test_json_files_valid():
     """Test that all JSON files are valid and parseable"""
@@ -61,15 +71,25 @@ def test_json_files_valid():
                 try:
                     with open(fi, "r") as f:
                         data = json.load(f)
-                    assert isinstance(data, dict), f"JSON file should contain an object: {fi}"
+                    assert isinstance(
+                        data, dict
+                    ), f"JSON file should contain an object: {fi}"
                 except json.JSONDecodeError as e:
                     pytest.fail(f"Invalid JSON in {fi}: {e}")
                 except Exception as e:
                     pytest.fail(f"Error reading {fi}: {e}")
 
+
 def test_json_required_fields():
     """Test that all JSON files contain required fields"""
-    required_fields = ["feature", "version", "model", "is_default", "parameters", "additional_components"]
+    required_fields = [
+        "feature",
+        "version",
+        "model",
+        "is_default",
+        "parameters",
+        "additional_components",
+    ]
 
     for feature_dir in PROMPTS_DIR.iterdir():
         if not feature_dir.is_dir():
@@ -90,12 +110,24 @@ def test_json_required_fields():
                     assert field in data, f"Missing required field '{field}' in {fi}"
 
                 # Validate field types
-                assert isinstance(data["feature"], str), f"'feature' must be a string in {fi}"
-                assert isinstance(data["version"], str), f"'version' must be a string in {fi}"
-                assert isinstance(data["model"], str), f"'model' must be a string in {fi}"
-                assert isinstance(data["is_default"], bool), f"'is_default' must be a boolean in {fi}"
-                assert isinstance(data["parameters"], dict), f"'parameters' must be an object in {fi}"
-                assert isinstance(data["additional_components"], list), f"'additional_components' must be an array in {fi}"
+                assert isinstance(
+                    data["feature"], str
+                ), f"'feature' must be a string in {fi}"
+                assert isinstance(
+                    data["version"], str
+                ), f"'version' must be a string in {fi}"
+                assert isinstance(
+                    data["model"], str
+                ), f"'model' must be a string in {fi}"
+                assert isinstance(
+                    data["is_default"], bool
+                ), f"'is_default' must be a boolean in {fi}"
+                assert isinstance(
+                    data["parameters"], dict
+                ), f"'parameters' must be an object in {fi}"
+                assert isinstance(
+                    data["additional_components"], list
+                ), f"'additional_components' must be an array in {fi}"
 
 
 def test_feature_name_matches_directory():
@@ -115,8 +147,9 @@ def test_feature_name_matches_directory():
                 with open(fi, "r") as f:
                     data = json.load(f)
 
-                assert data["feature"] == feature_dir.name, \
-                    f"Feature name '{data['feature']}' doesn't match directory '{feature_dir.name}' in {fi}"
+                assert (
+                    data["feature"] == feature_dir.name
+                ), f"Feature name '{data['feature']}' doesn't match directory '{feature_dir.name}' in {fi}"
 
 
 def test_markdown_files_not_empty():
@@ -145,7 +178,7 @@ def test_version_changed_from_main():
             ["git", "rev-parse", "--verify", "main"],
             cwd=PROMPTS_DIR.parent,
             capture_output=True,
-            text=True
+            text=True,
         )
 
         # Get list of changed files compared to base branch
@@ -153,15 +186,17 @@ def test_version_changed_from_main():
             ["git", "diff", "--name-only", "main"],
             cwd=PROMPTS_DIR.parent,
             capture_output=True,
-            text=True
+            text=True,
         )
 
         if result.returncode != 0:
             pytest.skip(f"Git diff failed: {result.stderr}")
 
-        changed_files = result.stdout.strip().split("\n") if result.stdout.strip() else []
+        changed_files = (
+            result.stdout.strip().split("\n") if result.stdout.strip() else []
+        )
 
-        if not changed_files or changed_files == ['']:
+        if not changed_files or changed_files == [""]:
             pytest.skip("No changed files compared to main branch")
 
         # Group changed files by their base name (without extension)
@@ -186,8 +221,9 @@ def test_version_changed_from_main():
 
             if changes["md"] or changes["json"]:
                 # At least one file changed, verify JSON also changed
-                assert changes["json"], \
-                    f"File {base_path}.md changed but {base_path}.json was not updated"
+                assert changes[
+                    "json"
+                ], f"File {base_path}.md changed but {base_path}.json was not updated"
 
                 # Get the version from main branch
                 try:
@@ -196,7 +232,7 @@ def test_version_changed_from_main():
                         cwd=PROMPTS_DIR.parent,
                         capture_output=True,
                         text=True,
-                        check=True
+                        check=True,
                     )
                     old_data = json.loads(result.stdout)
                     old_version = old_data.get("version")
@@ -211,9 +247,49 @@ def test_version_changed_from_main():
 
                 # Only validate version change if the file existed in main
                 if old_version is not None:
-                    assert new_version is not None, f"Version missing in current branch for {base_path}.json"
-                    assert old_version != new_version, \
-                        f"Version unchanged from main branch in {base_path}.json: {old_version}"
+                    assert (
+                        new_version is not None
+                    ), f"Version missing in current branch for {base_path}.json"
+                    assert (
+                        old_version != new_version
+                    ), f"Version unchanged from main branch in {base_path}.json: {old_version}"
 
     except subprocess.CalledProcessError as e:
         pytest.skip(f"Git command failed: {e.cmd} - {e.stderr}")
+
+
+def test_only_one_model_default_per_feature_version():
+    """Test that only one model is set as default per feature & major version combination."""
+    for feature_dir in PROMPTS_DIR.iterdir():
+        if not feature_dir.is_dir():
+            continue
+
+        for major_version_dir in feature_dir.iterdir():
+            if not major_version_dir.is_dir():
+                continue
+
+            # Collect all models and their is_default status for this feature/version combo
+            default_models = []
+            all_models = []
+
+            for file in major_version_dir.iterdir():
+                if file.suffix != ".json":
+                    continue
+
+                with open(file, "r") as f:
+                    data = json.load(f)
+
+                model_name = data.get("model", file.stem)
+                all_models.append(model_name)
+
+                if data.get("is_default") == True:
+                    default_models.append(model_name)
+
+            # verify only one model is marked true by default
+            feature_version_key = f"{feature_dir.name}/{major_version_dir.name}"
+
+            assert len(default_models) == 1, (
+                f"Expected exactly 1 default model for {feature_version_key}, "
+                f"but found {len(default_models)}: {default_models}. "
+                f"Available models: {all_models}"
+            )
