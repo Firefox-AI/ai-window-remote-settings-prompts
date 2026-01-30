@@ -1,9 +1,8 @@
 {
  "feature": "memories-initial-generation-system",
- "version": "1.1",
+ "version": "1.2",
  "model": "qwen3-235b-a22b-instruct-2507-maas",
- "model_choice_id": 2,
- "is_default": true,
+ "is_default": false,
  "parameters": {},
  "additional_components": [
    "memories-initial-generation-user",
