@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "2.0",
+  "version": "2.1",
   "model": "qwen3-235b-a22b-instruct-2507-maas",
   "model_choice_id": "2",
   "is_default": true,

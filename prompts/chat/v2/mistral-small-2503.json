@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "2.0",
+  "version": "2.1",
   "model": "mistral-small-2503",
   "model_choice_id": "3",
   "is_default": false,
