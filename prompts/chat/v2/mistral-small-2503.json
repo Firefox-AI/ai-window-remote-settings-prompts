@@ -1,8 +1,8 @@
 {
   "feature": "chat",
-  "version": "2.3",
-  "model": "gemini-2.5-flash-lite",
-  "model_choice_id": "1",
+  "version": "2.2",
+  "model": "mistral-small-2503",
+  "model_choice_id": "3",
   "is_default": false,
   "parameters": {
     "temperature": 1.0
