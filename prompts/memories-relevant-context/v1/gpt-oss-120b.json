@@ -1,8 +1,8 @@
 {
  "feature": "memories-relevant-context",
- "version": "2.1",
- "model": "qwen3-235b-a22b-instruct-2507-maas",
- "is_default": true,
+ "version": "1.0",
+ "model": "gpt-oss-120b",
+ "is_default": false,
  "parameters": {},
  "additional_components": []
 }
