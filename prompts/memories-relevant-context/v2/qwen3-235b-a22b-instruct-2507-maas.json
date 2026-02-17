@@ -1,6 +1,6 @@
 {
  "feature": "memories-relevant-context",
- "version": "2.1",
+ "version": "2.2",
  "model": "qwen3-235b-a22b-instruct-2507-maas",
  "is_default": true,
  "parameters": {},
