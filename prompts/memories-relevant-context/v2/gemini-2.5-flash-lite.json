@@ -1,6 +1,6 @@
 {
  "feature": "memories-relevant-context",
- "version": "2.1",
+ "version": "2.2",
  "model": "gemini-2.5-flash-lite",
  "is_default": false,
  "parameters": {},
