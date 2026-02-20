@@ -1,0 +1,1 @@
+Return only the requested suggestions, one per line.
