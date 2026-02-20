@@ -1,0 +1,8 @@
+{
+ "feature": "memories-relevant-context",
+ "version": "2.1",
+ "model": "gpt-oss-120b",
+ "is_default": false,
+ "parameters": {},
+ "additional_components": []
+}

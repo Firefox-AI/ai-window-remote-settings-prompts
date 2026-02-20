@@ -1,8 +1,8 @@
 {
- "feature": "memories-initial-generation-user",
- "version": "1.3",
+ "feature": "memories-relevant-context",
+ "version": "2.2",
  "model": "qwen3-235b-a22b-instruct-2507-maas",
- "is_default": false,
+ "is_default": true,
  "parameters": {},
  "additional_components": []
 }
