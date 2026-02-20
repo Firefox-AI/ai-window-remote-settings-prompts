@@ -1,8 +1,7 @@
 {
   "feature": "chat",
-  "version": "2.2",
+  "version": "2.5",
   "model": "mistral-small-2503",
-  "model_choice_id": "3",
   "is_default": false,
   "parameters": {
     "temperature": 1.0
