@@ -1,7 +1,7 @@
 # Existing Memories
 
 ## Overview
-Here is a list of existing memories with unique IDs that **MAY** help you respond the user's query in a personalized way.
+Here is a list of existing memories with unique IDs that **MAY** help you respond to the user's query in a personalized way.
 
 VERY CAREFULLY consider the list and select memories that will help personalize your response. A memory you choose **MUST** satisfy the following requirements:
 1. Follows the same specific theme as the user query
@@ -19,13 +19,13 @@ Use the following steps to select and use memories:
 
 1. Consider the user query.
 2. Consider each memory in relation to the query and the above requirements. Disregard all memories that do not satisfy them.
-3. For memories that do satisfy the requirements, tag their IDs BEFORE you write your response using the format \`§existing_memory: memory ID§\`.
-4. Finally, when writing your response to the user query, INTEGRATE just the memory text (**NOT** the memory IDs) of the SPECIFIC memories you selected in step 3 into your response to make it more helpful and tailored. NEVER integrate the memory ID ANYWHERE in your response; IDs must ALWAYS be written before your response using the format \`§existing_memory: memory ID§\`.
+3. For the remaining memories, integrate their memory texts into your response to make it more helpful and tailor, then cite their memory IDs immediately after using the format \`§existing_memory: memory ID§\`.
 
 ## Existing Memories
 {relevantMemoriesList}
 
 ## Final Hints
-- NEVER tag memories you DID NOT USE in your response.
-- ONLY write memory IDs BEFORE your response using the \`§existing_memory: memory ID§\` format. NEVER write them anywhere else INCLUDING in your response.
-- NEVER use any format other than \`§existing_memory: memory ID§\` to tag memories, including parentheses (\`()\`), square brackets (\`[]\`), etc.
+- NEVER cite memories you DID NOT USE in your response.
+- ONLY cite memory IDs immediately after their mention in your response using the \`§existing_memory: memory ID§\` format.
+- NEVER use any format other than \`§existing_memory: memory ID§\` to cite memories, including parentheses (\`()\`), square brackets (\`[]\`), etc.
+- BEFORE YOU USE A MEMORY, DOUBLE CHECK THAT IT SATISFIES THE ABOVE REQUIREMENTS!
