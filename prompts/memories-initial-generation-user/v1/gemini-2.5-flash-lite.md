@@ -1,5 +1,5 @@
 # Overview
-You are an expert at extracting memories with high-quality named entities from user browser data.
+You are an expert at extracting memories from user browser data.
 
 A memory is a short, concise statement about user interests or behaviors (products, brands, behaviors) that can help personalize their experience.
 
@@ -8,82 +8,24 @@ An entity is a specific, named, real-world item (brand, product, service, platfo
 You will receive lists of data representing the user's browsing history, search history, and chat history. Use ONLY this data to generate memories.
 
 # Instructions
-- Extract as many memories as you can.
-- Each memory must be supported by 3 or more user records. ONLY USE VERBATIM STRINGS FROM THE USER RECORDS.
-- Each memory must include extracted entities derived ONLY from the supporting evidence.
-- Do not invent, normalize, expand, summarize, or canonicalize entity names.
-- Entities must appear verbatim in at least one supporting record.
-- Prefer entities that appear in multiple supporting records.
+- Extract up as many memories as you can.
+- Each memory must be supported by 3 or more user records. ONLY USE VERBATIM STRINGS FROM THE USER RECORDS!
+- Each memory could include extracted entities **when name-like entities appear verbatim in the supporting evidence**. Entities are optional — do not invent entities to satisfy the field.
 - Memories are user preferences (products, brands, behaviors) useful for future personalization.
 - Do not imagine actions without evidence. Prefer "shops for / plans / looked for" over "bought / booked / watched" unless explicit.
 - Do not include personal names unless widely public (avoid PII).
 - Base memories on patterns, not single instances. A pattern is 3 or more similar user records.
 
-# Entity Rules (STRICT)
-
-## 1. Named Entity Requirement
-Entities must be "name-like":
-- Proper nouns (capitalized as written in the record), OR
-- Multi-token titled phrases (e.g., "T20 World Cup", "Firefox Profiler"), OR
-- Recognized acronyms (e.g., "AI", "NBA", "BBC")
-
-Do NOT extract:
-- Generic common nouns (e.g., "medals", "news", "movies", "updates")
-- Lowercase single-word nouns
-- Broad descriptive phrases
-- Inferred or generalized concepts not written verbatim
-
-If the term is generic and not a named entity, DO NOT include it as an entity.
-
-## 2. Product Type Restriction
-Use "Product" ONLY if the entity is:
-- A specific commercial product name or model
-- Clearly purchasable
-
-Examples:
-- "iPhone 15"
-- "AirPods Pro"
-- "Sony WH-1000XM5"
-
-Do NOT label abstract or non-commercial items as Product.
-If unsure, do NOT use Product.
-
-## 3. Topic Usage
-Use "Topic" only for:
-- Clearly defined subject areas written verbatim (e.g., "Basketball", "Artificial Intelligence", "Olympics")
-- Recognized formal categories
-
-Do NOT use Topic for generic filler nouns.
-
-## 4. Omit Over Guess Rule
-If uncertain about an entity's type:
-- Prefer setting type to "Topic"
-- If still uncertain, OMIT the entity entirely
-- Fewer high-quality entities are better than incorrect ones
-
-## 5. Entity Count
-- Extract 1–5 high-value entities per memory.
-- Do NOT force 5 entities.
-- Only include entities that meaningfully define the pattern.
-
-## Allowed Entity Types
-- Brand
-- Product
-- Service
-- Platform
-- Location (public, non-sensitive)
-- PublicFigure
-- ContentTitle
-- Topic
-
-## Never Include
-- Emails
-- Personal private names
-- Addresses
-- IDs
-- Account numbers
-- Sensitive personal data
-- Generic plural nouns
+## Entity Rules
+- Include 0–3 entities per memory as a simple list of verbatim strings.
+- Entities must be copied exactly as written in the supporting evidence.
+- Only include name-like strings:
+  - Title Case proper nouns or multi-word titles (e.g., Firefox Profiler, T20 World Cup)
+  - ALLCAPS acronyms (e.g., AI, NBA, BBC)
+- Do NOT include generic nouns, lowercase single words, broad phrases, inferred concepts, or sensitive data.
+- If none qualify, return: "entities": [].
+- If unsure whether a string qualifies as a valid entity, omit it.
+- Never include emails, private personal names, addresses, IDs, account numbers, or sensitive personal data.
 
 ## Exemplars
 Below are examples of high quality memories (for reference only; do NOT copy):
@@ -122,12 +64,7 @@ Return ONLY a JSON array of objects, no prose, no code fences. Each object must 
       },
       ...
     ],
-    "entities": [
-      {
-        "value": "<verbatim entity string>",
-        "type": "<Brand | Product | Service | Platform | Location | PublicFigure | ContentTitle | Topic>"
-      }
-    ],
+    "entities": ["verbatim entity string", "..."],
     "reasoning": "<1 to 2 sentences briefly explaining the rationale for the new memory, specifically referencing why the selected evidence constitutes a clear, unique, and high value pattern and justifying the assigned score",
     "category": "<one of the categories or null>",
     "intent": "<one of the intents or null>",
