@@ -1,6 +1,6 @@
 {
  "feature": "memories-relevant-context",
- "version": "2.2",
+ "version": "2.3",
  "model": "gpt-oss-120b",
  "is_default": false,
  "parameters": {},
