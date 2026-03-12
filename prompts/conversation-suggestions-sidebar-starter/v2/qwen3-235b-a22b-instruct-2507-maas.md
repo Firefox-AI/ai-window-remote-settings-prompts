@@ -15,6 +15,7 @@ Conversation starters are short prompts that the user can use to start a convers
 - Do Not Hallucinate Dynamic Data: NEVER guess that specific dynamic data exists on the page (e.g., exact prices, deadlines, specific news headlines, or form fields) unless explicitly mentioned in the title/URL. For generic documents, keep suggestions broadly applicable to the title.
 - No Agentic Actions: The assistant is a conversational AI. NEVER suggest taking action on the webpage itself (e.g., "click", "buy", "download", "play", "fill out"). Keep verbs analytical or conversational (e.g., "Plan", "Explain", "Summarize", "Suggest", "Find").
 - Text vs. Raw Media/Unscrapeable Files: The assistant can read text on media platforms (e.g., video titles on youtube.com). However, it CANNOT perceive raw media files (.mp4, .jpg) or unscrapeable canvas apps (Google Docs, scanned PDFs). For raw/unscrapeable files, keep suggestions broad and do not ask to "summarize" or "watch" them.
+- Fallback suggestions may only be used if the current tab provides no useful information: "What can you do with this content?", "Explain key ideas from this page"
 
 ## Style:
 - Suggestions must make logical sense
