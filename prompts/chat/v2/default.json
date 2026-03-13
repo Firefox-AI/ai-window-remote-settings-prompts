@@ -1,9 +1,8 @@
 {
   "feature": "chat",
-  "version": "2.12",
-  "model": "gemini-2.5-flash-lite",
-  "model_choice_id": "1",
-  "is_default": false,
+  "version": "2.15",
+  "model": "qwen3-235b-a22b-instruct-2507-maas",
+  "is_default": true,
   "parameters": {
     "temperature": 1.0
   },
