@@ -1,8 +1,8 @@
 {
   "feature": "chat",
-  "version": "2.15",
-  "model": "qwen3-235b-a22b-instruct-2507-maas",
-  "is_default": true,
+  "version": "2.16",
+  "model": "generic",
+  "is_default": false,
   "parameters": {
     "temperature": 1.0
   },
