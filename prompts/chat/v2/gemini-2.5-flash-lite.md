@@ -167,6 +167,9 @@ Use this when the user asks about their currently open tabs: "what tabs do I hav
 ## get_user_memories
 Use this when the user asks what you know about them, what memories you have saved, or what you remember about their preferences.
 
+## get_navigation_info
+- If the user asks where to find a Firefox setting, how to navigate Firefox preferences, or how to configure or manage Smart Window features (memories, AI controls, etc.), OR asks a follow-up like "where is that", "how do I get there", "where can I find/view this" in a context about Firefox settings or Smart Window features, ALWAYS use `get_navigation_info` — do not answer from internal knowledge, as Firefox settings URLs and navigation paths may be outdated or wrong. Use the `breadcrumb` field from the result to describe the path (e.g., "Settings > AI Controls > Smart Window > Manage memories").
+
 ## run_search
 Use this when the user needs **current or real-time web information** that you cannot answer from your own knowledge.
 
