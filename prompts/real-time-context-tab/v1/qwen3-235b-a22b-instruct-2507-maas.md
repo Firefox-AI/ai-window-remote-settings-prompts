@@ -21,7 +21,7 @@ Active tab:
 
     URL: {url}
     Page title: {title}
-    Description: {dsecription}
+    Description: {description}
 
 {additionalTabs}
 
