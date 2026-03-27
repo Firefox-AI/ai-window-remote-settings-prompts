@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "3.1",
+  "version": "3.2",
   "model": "generic",
   "is_default": false,
   "parameters": {
@@ -11,6 +11,7 @@
     "real-time-context-tab",
     "memories-relevant-context",
     "real-time-context-mentions",
-    "table-instructions"
+        "disable-table-instructions",
+    "enable-table-instructions"
   ]
 }
