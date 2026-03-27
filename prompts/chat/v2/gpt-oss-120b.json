@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "2.15",
+  "version": "2.16",
   "model": "gpt-oss-120b",
   "model_choice_id": "3",
   "is_default": false,
