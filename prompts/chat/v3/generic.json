@@ -11,7 +11,7 @@
     "real-time-context-tab",
     "memories-relevant-context",
     "real-time-context-mentions",
-        "disable-table-instructions",
+    "disable-table-instructions",
     "enable-table-instructions"
   ]
 }
