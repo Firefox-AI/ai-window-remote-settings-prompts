@@ -1,8 +1,9 @@
 {
   "feature": "chat",
-  "version": "2.16",
+  "version": "2.17",
   "model": "gpt-oss-120b",
   "model_choice_id": "3",
+  "owner_name": "OpenAI",
   "is_default": false,
   "parameters": {
     "temperature": 1.0
