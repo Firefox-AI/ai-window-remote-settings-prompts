@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "2.19",
+  "version": "2.20",
   "model": "generic",
   "is_default": false,
   "parameters": {
