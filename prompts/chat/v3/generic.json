@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "3.2",
+  "version": "3.3",
   "model": "generic",
   "is_default": false,
   "parameters": {
@@ -13,5 +13,7 @@
     "real-time-context-mentions",
     "disable-table-instructions",
     "enable-table-instructions"
-  ]
+  ],
+  "purpose": "chat",
+  "service_type": "ai"
 }

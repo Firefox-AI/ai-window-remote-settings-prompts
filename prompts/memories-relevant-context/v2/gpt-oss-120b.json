@@ -1,8 +1,10 @@
 {
  "feature": "memories-relevant-context",
- "version": "2.3",
+ "version": "2.4",
  "model": "gpt-oss-120b",
  "is_default": false,
  "parameters": {},
- "additional_components": []
+ "additional_components": [],
+ "purpose": "memory-generation",
+ "service_type": "memories"
 }

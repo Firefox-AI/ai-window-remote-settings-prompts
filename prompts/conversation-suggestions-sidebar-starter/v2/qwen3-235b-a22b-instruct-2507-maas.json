@@ -1,8 +1,10 @@
 {
   "feature": "conversation-suggestions-sidebar-starter",
-  "version": "2.1",
+  "version": "2.2",
   "model": "qwen3-235b-a22b-instruct-2507-maas",
   "is_default": true,
   "parameters": {},
-  "additional_components": ["conversation-suggestions-assistant-limitations", "conversation-suggestions-memories", "conversation-starters-sidebar-system"]
+  "additional_components": ["conversation-suggestions-assistant-limitations", "conversation-suggestions-memories", "conversation-starters-sidebar-system"],
+  "purpose": "convo-starters-sidebar",
+  "service_type": "ai"
 }

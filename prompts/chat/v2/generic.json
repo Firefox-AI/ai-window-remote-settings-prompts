@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "2.19",
+  "version": "2.20",
   "model": "generic",
   "is_default": false,
   "parameters": {
@@ -11,5 +11,7 @@
     "real-time-context-tab",
     "memories-relevant-context",
     "real-time-context-mentions"
-  ]
+  ],
+  "purpose": "chat",
+  "service_type": "ai"
 }
