@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "3.3",
+  "version": "3.4",
   "model": "mistral-small-2503",
   "owner_name": "Mistral",
   "is_default": false,
@@ -14,5 +14,7 @@
     "real-time-context-mentions",
     "disable-table-instructions",
     "enable-table-instructions"
-  ]
+  ],
+  "purpose": "chat",
+  "service_type": "ai"
 }

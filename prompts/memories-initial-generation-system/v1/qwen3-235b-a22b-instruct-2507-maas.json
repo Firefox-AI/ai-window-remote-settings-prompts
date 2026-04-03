@@ -1,6 +1,6 @@
 {
  "feature": "memories-initial-generation-system",
- "version": "1.2",
+ "version": "1.3",
  "model": "qwen3-235b-a22b-instruct-2507-maas",
  "is_default": false,
  "parameters": {},
@@ -10,5 +10,7 @@
    "memories-deduplication-user",
    "memories-sensitivity-filter-system",
    "memories-sensitivity-filter-user"
- ]
+ ],
+ "purpose": "memory-generation",
+ "service_type": "memories"
 }
