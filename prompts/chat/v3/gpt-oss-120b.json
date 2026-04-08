@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "3.8",
+  "version": "3.9",
   "model": "gpt-oss-120b",
   "model_choice_id": "3",
   "owner_name": "OpenAI",
