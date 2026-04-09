@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "3.4",
+  "version": "3.5",
   "model": "gpt-oss-120b",
   "model_choice_id": "3",
   "owner_name": "OpenAI",
@@ -12,9 +12,7 @@
     "real-time-context-date",
     "real-time-context-tab",
     "memories-relevant-context",
-    "real-time-context-mentions",
-    "disable-table-instructions",
-    "enable-table-instructions"
+    "real-time-context-mentions"
   ],
   "purpose": "chat",
   "service_type": "ai"
