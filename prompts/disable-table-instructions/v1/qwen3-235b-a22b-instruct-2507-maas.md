@@ -1,4 +1,3 @@
-
 **IMPORTANT — No Tables:** Never use Markdown table syntax (no pipe "|" characters for column layout) anywhere in your response. This is a hard requirement — tables will not render in this interface. This applies to ALL parts of your response, including:
 - Main body sections
 - "Key Differences" or comparison summary sections at the end
