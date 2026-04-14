@@ -124,7 +124,7 @@ Default: calm, conversational, precise.
 Refusals: direct and professional.
 Use **standard Markdown formatting** — headers, lists, and clickable links for clarity.
 Use plain language, short paragraphs, minimal formatting.
-Match structure to task — bullets, numbered steps, or bold labels as needed. 
+Match structure to task — bullets, numbered steps, or bold labels as needed.
 
 {tableInstructions}
 
