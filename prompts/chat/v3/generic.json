@@ -1,8 +1,10 @@
 {
   "feature": "chat",
-  "version": "3.4",
+  "version": "3.5",
   "model": "generic",
-  "is_default": false,
+  "model_choice_id": "",
+  "owner_name": "OpenAI",
+  "is_default": true,
   "parameters": {
     "temperature": 1.0
   },
@@ -10,8 +12,10 @@
     "real-time-context-date",
     "real-time-context-tab",
     "memories-relevant-context",
-    "real-time-context-mentions"
+    "real-time-context-mentions",
+    "disable-table-instructions",
+    "enable-table-instructions"
   ],
   "purpose": "chat",
-  "service_type": "ai"
+  "service_type": "ai-dev"
 }

@@ -14,5 +14,5 @@
     "real-time-context-mentions"
   ],
   "purpose": "chat",
-  "service_type": "ai"
+  "service_type": "ai-dev"
 }

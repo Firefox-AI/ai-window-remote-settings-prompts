@@ -1,8 +1,10 @@
 {
   "feature": "chat",
-  "version": "2.20",
+  "version": "2.19",
   "model": "generic",
-  "is_default": false,
+  "model_choice_id": "",
+  "owner_name": "OpenAI",
+  "is_default": true,
   "parameters": {
     "temperature": 1.0
   },
@@ -13,5 +15,5 @@
     "real-time-context-mentions"
   ],
   "purpose": "chat",
-  "service_type": "ai"
+  "service_type": "ai-dev"
 }
