@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "4.0",
+  "version": "4.1",
   "model": "mistral-small-2503",
   "owner_name": "Mistral",
   "is_default": false,
