@@ -1,9 +1,8 @@
 {
   "feature": "chat",
-  "version": "3.5",
-  "model": "gemini-2.5-flash-lite",
-  "model_choice_id": "1",
-  "owner_name": "Google",
+  "version": "4.1",
+  "model": "mistral-small-2503",
+  "owner_name": "Mistral",
   "is_default": false,
   "parameters": {
     "temperature": 1.0
@@ -12,7 +11,9 @@
     "real-time-context-date",
     "real-time-context-tab",
     "memories-relevant-context",
-    "real-time-context-mentions"
+    "real-time-context-mentions",
+    "disable-table-instructions",
+    "enable-table-instructions"
   ],
   "purpose": "chat",
   "service_type": "ai"

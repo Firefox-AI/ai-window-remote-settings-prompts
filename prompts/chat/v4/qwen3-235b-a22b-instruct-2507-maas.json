@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "3.5",
+  "version": "4.1",
   "model": "qwen3-235b-a22b-instruct-2507-maas",
   "model_choice_id": "2",
   "owner_name": "Alibaba",
@@ -12,7 +12,9 @@
     "real-time-context-date",
     "real-time-context-tab",
     "memories-relevant-context",
-    "real-time-context-mentions"
+    "real-time-context-mentions",
+    "disable-table-instructions",
+    "enable-table-instructions"
   ],
   "purpose": "chat",
   "service_type": "ai"
