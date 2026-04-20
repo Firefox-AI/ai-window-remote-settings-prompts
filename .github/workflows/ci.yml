@@ -3,7 +3,7 @@ name: CI - Validate Prompts
 on:
   pull_request:
     branches:
-      - main
+      - stage
     paths:
       - 'prompts/**'
       - 'test.py'
