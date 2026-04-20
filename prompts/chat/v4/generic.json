@@ -1,7 +1,8 @@
 {
   "feature": "chat",
-  "version": "4.1",
-  "model": "generic",
+  "version": "4.2",
+  "model": "custom-model",
+  "model_choice_id": "1",
   "is_default": false,
   "parameters": {
     "temperature": 1.0
