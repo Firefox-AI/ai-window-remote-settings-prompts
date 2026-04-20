@@ -22,7 +22,7 @@ jobs:
 
       - name: Fetch main branch
         run: |
-          git fetch origin main:main
+          git fetch origin prod:prod
 
       - name: Set up Python
         uses: actions/setup-python@v5
