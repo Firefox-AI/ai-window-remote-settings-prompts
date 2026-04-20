@@ -1,0 +1,2 @@
+ci.yml merge=ours
+test.py merge=ours
