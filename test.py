@@ -173,9 +173,9 @@ def test_markdown_files_not_empty():
 def test_version_changed_from_main():
     """Test that version is different from main branch when files change"""
     try:
-        # Get the default branch name (usually 'main' or 'master')
+        # Get the default branch name 
         result = subprocess.run(
-            ["git", "rev-parse", "--verify", "main"],
+            ["git", "rev-parse", "--verify", "stage"],
             cwd=PROMPTS_DIR.parent,
             capture_output=True,
             text=True,
@@ -183,7 +183,7 @@ def test_version_changed_from_main():
 
         # Get list of changed files compared to base branch
         result = subprocess.run(
-            ["git", "diff", "--name-only", "main"],
+            ["git", "diff", "--name-only", "stage"],
             cwd=PROMPTS_DIR.parent,
             capture_output=True,
             text=True,
@@ -197,7 +197,7 @@ def test_version_changed_from_main():
         )
 
         if not changed_files or changed_files == [""]:
-            pytest.skip("No changed files compared to main branch")
+            pytest.skip("No changed files compared to stage branch")
 
         # Group changed files by their base name (without extension)
         prompts_changed = {}
@@ -228,7 +228,7 @@ def test_version_changed_from_main():
                 # Get the version from main branch
                 try:
                     result = subprocess.run(
-                        ["git", "show", f"main:{base_path}.json"],
+                        ["git", "show", f"stage:{base_path}.json"],
                         cwd=PROMPTS_DIR.parent,
                         capture_output=True,
                         text=True,
