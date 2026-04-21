@@ -2,9 +2,10 @@ import pytest
 import json
 import subprocess
 from pathlib import Path
+import os
 
 PROMPTS_DIR = Path(__file__).parent / "prompts"
-
+THIS_BRANCH = os.environ.get("THIS_BRANCH", "prod")
 
 def test_directory_structure():
     """Test that prompts directory has correct structure: feature/version/files"""
@@ -175,7 +176,7 @@ def test_version_changed_from_main():
     try:
         # Get the default branch name 
         result = subprocess.run(
-            ["git", "rev-parse", "--verify", "stage"],
+            ["git", "rev-parse", "--verify", THIS_BRANCH],
             cwd=PROMPTS_DIR.parent,
             capture_output=True,
             text=True,
@@ -183,7 +184,7 @@ def test_version_changed_from_main():
 
         # Get list of changed files compared to base branch
         result = subprocess.run(
-            ["git", "diff", "--name-only", "stage"],
+            ["git", "diff", "--name-only", THIS_BRANCH],
             cwd=PROMPTS_DIR.parent,
             capture_output=True,
             text=True,
@@ -197,7 +198,7 @@ def test_version_changed_from_main():
         )
 
         if not changed_files or changed_files == [""]:
-            pytest.skip("No changed files compared to stage branch")
+            pytest.skip(f"No changed files compared to {THIS_BRANCH} branch")
 
         # Group changed files by their base name (without extension)
         prompts_changed = {}
@@ -228,7 +229,7 @@ def test_version_changed_from_main():
                 # Get the version from main branch
                 try:
                     result = subprocess.run(
-                        ["git", "show", f"stage:{base_path}.json"],
+                        ["git", "show", f"{THIS_BRANCH}:{base_path}.json"],
                         cwd=PROMPTS_DIR.parent,
                         capture_output=True,
                         text=True,
