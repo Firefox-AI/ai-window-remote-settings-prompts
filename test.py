@@ -2,9 +2,10 @@ import pytest
 import json
 import subprocess
 from pathlib import Path
+import os
 
 PROMPTS_DIR = Path(__file__).parent / "prompts"
-THIS_BRANCH = "prod"
+THIS_BRANCH = os.environ.get("THIS_BRANCH", "prod")
 
 def test_directory_structure():
     """Test that prompts directory has correct structure: feature/version/files"""
