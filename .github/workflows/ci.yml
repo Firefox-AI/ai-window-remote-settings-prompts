@@ -3,7 +3,7 @@ name: CI - Validate Prompts
 on:
   pull_request:
     branches:
-      - prod
+      - stage
     paths:
       - 'prompts/**'
       - 'test.py'
@@ -22,7 +22,7 @@ jobs:
 
       - name: Fetch main branch
         run: |
-          git fetch origin prod:prod
+          git fetch origin stage:stage
 
       - name: Set up Python
         uses: actions/setup-python@v5
