@@ -3,6 +3,7 @@ name: CI - Validate Prompts
 on:
   pull_request:
     branches:
+      - prod
       - stage
     paths:
       - 'prompts/**'
