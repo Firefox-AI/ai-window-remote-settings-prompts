@@ -1,0 +1,10 @@
+{
+ "feature": "memories-deduplication-system",
+ "version": "1.2",
+ "model": "gemini-3.1-flash-lite",
+ "is_default": true,
+ "parameters": {},
+ "additional_components": [],
+ "purpose": "memory-generation",
+ "service_type": "memories"
+}

@@ -1,0 +1,10 @@
+{
+ "feature": "memories-relevant-context",
+ "version": "1.1",
+ "model": "gemini-3.1-flash-lite",
+ "is_default": false,
+ "parameters": {},
+ "additional_components": [],
+ "purpose": "memory-generation",
+ "service_type": "memories"
+}

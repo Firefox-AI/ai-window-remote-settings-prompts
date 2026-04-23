@@ -1,0 +1,16 @@
+{
+ "feature": "memories-initial-generation-system",
+ "version": "1.3",
+ "model": "gemini-3.1-flash-lite",
+ "is_default": true,
+ "parameters": {},
+ "additional_components": [
+   "memories-initial-generation-user",
+   "memories-deduplication-system",
+   "memories-deduplication-user",
+   "memories-sensitivity-filter-system",
+   "memories-sensitivity-filter-user"
+ ],
+ "purpose": "memory-generation",
+ "service_type": "memories"
+}
