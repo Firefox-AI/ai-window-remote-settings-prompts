@@ -6,6 +6,13 @@ on:
     paths:
       - 'prompts/**'
 
+# Cancel in-flight runs on new pushes to the same PR. Each run makes
+# ~760 MLPA + judge calls; without this, a fast iteration burns quota
+# and produces racing comment updates.
+concurrency:
+  group: diff-regression-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   diff_regression:
     if: contains(github.event.pull_request.labels.*.name, 'needs-regression-eval')
@@ -115,18 +122,31 @@ jobs:
 
             # Run the suite with this model. We override model_name via a
             # one-line sed so a single YAML supports any model.
+            # Per-model 25-min ceiling so a hung MLPA endpoint on one model
+            # doesn't starve later iterations of the loop. The job-level
+            # timeout-minutes is the outer fence; this is the inner one.
             (
               cd _evals
               cp eval_suites/diff_regression.yaml /tmp/diff_regression.yaml.bak
               sed -E -i "s|^(    model_name:) mlpa:.*$|\\1 $full_name|" eval_suites/diff_regression.yaml
-              DIFF_REGRESSION_BASELINE_PROMPT_PATH=/tmp/baseline.md \
-                DIFF_REGRESSION_CANDIDATE_PROMPT_PATH=/tmp/candidate.md \
-                DIFF_REGRESSION_OUTPUT_DIR="$run_dir" \
-                python scripts/eval.py --suite diff_regression || any_failed=1
+              timeout 1500 \
+                env DIFF_REGRESSION_BASELINE_PROMPT_PATH=/tmp/baseline.md \
+                  DIFF_REGRESSION_CANDIDATE_PROMPT_PATH=/tmp/candidate.md \
+                  DIFF_REGRESSION_OUTPUT_DIR="$run_dir" \
+                python scripts/eval.py --suite diff_regression
+              status=$?
               # Restore YAML so a follow-up loop iteration starts from the
               # canonical default.
               mv /tmp/diff_regression.yaml.bak eval_suites/diff_regression.yaml
-            )
+              if [ "$status" -eq 124 ]; then
+                echo "::warning::diff_regression for $model exceeded the per-model timeout (25 min)"
+                touch "$run_dir/TIMED_OUT"
+              elif [ "$status" -ne 0 ]; then
+                # Non-zero exit but not timeout — e.g. crash. Surface it.
+                echo "::warning::diff_regression for $model exited $status"
+                exit "$status"
+              fi
+            ) || any_failed=1
 
             if [ -f "$run_dir/BLOCKED" ]; then
               echo "::error::diff_regression flagged BLOCK regressions for $model"
