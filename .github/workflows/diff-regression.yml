@@ -1,0 +1,121 @@
+name: Differential Regression Eval
+
+on:
+  pull_request:
+    types: [labeled, synchronize, opened]
+    paths:
+      - 'prompts/**'
+
+jobs:
+  diff_regression:
+    if: contains(github.event.pull_request.labels.*.name, 'needs-regression-eval')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Fetch main
+        run: git fetch origin main:main
+
+      - name: Detect changed prompt model
+        id: detect
+        run: |
+          changed=$(git diff --name-only origin/main..HEAD -- 'prompts/chat/**/*.md' | head -n 1)
+          if [ -z "$changed" ]; then
+            echo "No prompt .md changes detected; skipping."
+            echo "skip=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          echo "changed_path=$changed" >> $GITHUB_OUTPUT
+          echo "skip=false" >> $GITHUB_OUTPUT
+
+      - name: Extract baseline (main) and candidate (PR head) prompt files
+        if: steps.detect.outputs.skip != 'true'
+        run: |
+          git show main:${{ steps.detect.outputs.changed_path }} > /tmp/main_baseline.md
+          cp ${{ steps.detect.outputs.changed_path }} /tmp/candidate.md
+
+      - name: Clone evals repo
+        if: steps.detect.outputs.skip != 'true'
+        env:
+          EVALS_REPO_TOKEN: ${{ secrets.EVALS_REPO_TOKEN }}
+        run: |
+          git clone --depth 1 \
+            https://x-access-token:${EVALS_REPO_TOKEN}@github.com/Firefox-AI/evals.git _evals
+
+      - name: Set up Python
+        if: steps.detect.outputs.skip != 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install evals deps
+        if: steps.detect.outputs.skip != 'true'
+        run: |
+          cd _evals
+          pip install -r requirements.txt
+
+      - name: Run diff-regression suite
+        if: steps.detect.outputs.skip != 'true'
+        env:
+          MLPA_TOKEN: ${{ secrets.MLPA_TOKEN }}
+          FASTLY_TOKEN: ${{ secrets.FASTLY_TOKEN }}
+          FXA_EMAIL: ${{ secrets.FXA_EMAIL }}
+          FXA_PASSWORD: ${{ secrets.FXA_PASSWORD }}
+          FXA_CLIENT_ID: ${{ secrets.FXA_CLIENT_ID }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          REMOTE_PROMPTS_PATH: ${{ github.workspace }}
+          DIFF_REGRESSION_BASELINE_PROMPT_PATH: /tmp/main_baseline.md
+          DIFF_REGRESSION_CANDIDATE_PROMPT_PATH: /tmp/candidate.md
+          DIFF_REGRESSION_PR_BODY: ${{ github.event.pull_request.body }}
+          DIFF_REGRESSION_OUTPUT_DIR: ${{ github.workspace }}/results/diff_regression
+        run: |
+          cd _evals
+          python scripts/eval.py --suite diff_regression
+        continue-on-error: true
+        id: eval
+
+      - name: Upload report artifacts
+        if: steps.detect.outputs.skip != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: diff-regression-report
+          path: results/diff_regression/
+
+      - name: Post PR comment
+        if: steps.detect.outputs.skip != 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const md = fs.readFileSync('results/diff_regression/report.md', 'utf8');
+            const marker = '<!-- diff-regression-report -->';
+            const body = marker + '\n' + md;
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner, repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find(c => c.body && c.body.startsWith(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                comment_id: existing.id, body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: context.issue.number, body,
+              });
+            }
+
+      - name: Fail if eval blocked
+        if: steps.detect.outputs.skip != 'true' && steps.eval.outcome == 'failure'
+        run: |
+          echo "Differential regression eval found blocking regressions."
+          exit 1
