@@ -2,7 +2,7 @@
  "feature": "memories-sensitivity-filter-user",
  "version": "1.3",
  "model": "gemini-3.1-flash-lite",
- "is_default": true,
+ "is_default": false,
  "parameters": {},
  "additional_components": [],
  "purpose": "memory-generation",
