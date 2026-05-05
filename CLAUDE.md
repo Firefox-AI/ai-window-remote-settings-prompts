@@ -1,0 +1,2 @@
+- Do not include Co-Authored-By lines in commits
+- Write commit messages that look human-written
