@@ -1,0 +1,8 @@
+{
+  "feature": "real-time-context-tab",
+  "version": "1.4",
+  "model": "gemini-3.1-flash-lite",
+  "is_default": false,
+  "parameters": {},
+  "additional_components": []
+}
