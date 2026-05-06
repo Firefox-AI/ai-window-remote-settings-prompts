@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "4.2",
+  "version": "4.3",
   "model": "custom-model",
   "model_choice_id": "0",
   "owner_name": "",
