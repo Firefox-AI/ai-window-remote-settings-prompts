@@ -1,0 +1,8 @@
+{
+ "feature": "memories-quality-filter-system",
+ "version": "1.0",
+ "model": "gemini-3.1-flash-lite",
+ "is_default": true,
+ "parameters": {},
+ "additional_components": []
+}
