@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "model_choice_id": "3",
+  "owner_name": "OpenAI",
+  "is_default": false,
+  "purpose": "chat",
+  "service_type": "ai",
+  "parameters": {
+    "temperature": 1.0
+  }
+}
