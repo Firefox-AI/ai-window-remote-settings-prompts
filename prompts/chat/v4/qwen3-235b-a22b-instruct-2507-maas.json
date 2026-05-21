@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "4.3",
+  "version": "4.5",
   "model": "qwen3-235b-a22b-instruct-2507-maas",
   "model_choice_id": "2",
   "owner_name": "Alibaba",
