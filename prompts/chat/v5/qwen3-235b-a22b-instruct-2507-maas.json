@@ -1,9 +1,10 @@
 {
   "feature": "chat",
-  "version": "4.4",
-  "model": "gemini-2.5-flash-lite",
-  "owner_name": "Google",
-  "is_default": false,
+  "version": "5.0",
+  "model": "qwen3-235b-a22b-instruct-2507-maas",
+  "model_choice_id": "2",
+  "owner_name": "Alibaba",
+  "is_default": true,
   "parameters": {
     "temperature": 1.0
   },
