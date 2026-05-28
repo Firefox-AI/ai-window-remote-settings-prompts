@@ -1,15 +1,17 @@
 {
  "feature": "memories-initial-generation-system",
- "version": "2.1",
+ "version": "2.0",
  "model": "gemini-2.5-flash-lite",
  "is_default": true,
  "parameters": {},
  "additional_components": [
    "memories-initial-generation-user",
-   "memories-quality-and-sensitivity-filter-system",
-   "memories-quality-and-sensitivity-filter-user",
+   "memories-quality-filter-system",
+   "memories-quality-filter-user",
    "memories-deduplication-system",
-   "memories-deduplication-user"
+   "memories-deduplication-user",
+   "memories-sensitivity-filter-system",
+   "memories-sensitivity-filter-user"
  ],
  "purpose": "memory-generation",
  "service_type": "memories"
