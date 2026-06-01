@@ -259,6 +259,33 @@ def test_version_changed_from_main():
         pytest.skip(f"Git command failed: {e.cmd} - {e.stderr}")
 
 
+def test_unique_model_choice_id_per_feature_version():
+    """Test that model_choice_id is unique within each feature/major version directory."""
+    for major_version_dir in (PROMPTS_DIR / "chat").iterdir():
+        if not major_version_dir.is_dir():
+            continue
+
+        seen_ids = {}
+        for fi in major_version_dir.iterdir():
+            if fi.suffix != ".json":
+                continue
+
+            with open(fi, "r") as f:
+                data = json.load(f)
+
+            choice_id = data.get("model_choice_id")
+            if choice_id is None:
+                continue
+            
+            choice_id = str(choice_id) # converting to string to catch int / str collisions
+            assert choice_id not in seen_ids, (
+                f"Duplicate model_choice_id '{choice_id}' in "
+                f"chat/{major_version_dir.name}: "
+                f"{seen_ids.get(choice_id)} and {fi.name}"
+            )
+            seen_ids[choice_id] = fi.name
+
+
 def test_only_one_model_default_per_feature_version():
     """Test that only one model is set as default per feature & major version combination."""
     for feature_dir in PROMPTS_DIR.iterdir():
