@@ -284,7 +284,7 @@ def test_unique_model_choice_id_per_feature_version():
                 f"{seen_ids.get(choice_id)} and {fi.name}"
             )
             seen_ids[choice_id] = fi.name
-
+            
 
 def test_only_one_model_default_per_feature_version():
     """Test that only one model is set as default per feature & major version combination."""
