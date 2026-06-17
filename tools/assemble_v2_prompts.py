@@ -228,6 +228,75 @@ def _detect_unresolved_placeholders(text: str) -> list[str]:
     return sorted(set(re.findall(r"\{([A-Za-z_][A-Za-z0-9_]*)\}", text)))
 
 
+def build_records_dump() -> list[dict]:
+    """Emit the RS records array shape that Patch B's loadV2Records consumes.
+
+    Walks prompts_v2/ once and produces one record per .md (modules + skills
+    + browser-context fragments). Matching Patch B's record filter:
+        r.kind in {"module", "skill"} and r.id contains `--v1--`.
+    """
+    records: list[dict] = []
+    chat_root = V2_ROOT / "features" / "chat"
+    if chat_root.exists():
+        for module_dir in sorted(chat_root.iterdir()):
+            if not module_dir.is_dir() or module_dir.name == "params":
+                continue
+            v1 = module_dir / "v1"
+            if not v1.exists():
+                continue
+            for md in sorted(v1.glob("*.md")):
+                records.append({
+                    "id": f"chat--{module_dir.name}--v1--{md.stem}",
+                    "kind": "module",
+                    "feature": "chat",
+                    "module": module_dir.name,
+                    "model": md.stem,
+                    "prompts": _read_text(md),
+                })
+
+    bc_root = V2_ROOT / "features" / "browser-context"
+    if bc_root.exists():
+        for fragment_dir in sorted(bc_root.iterdir()):
+            if not fragment_dir.is_dir():
+                continue
+            v1 = fragment_dir / "v1"
+            if not v1.exists():
+                continue
+            for md in sorted(v1.glob("*.md")):
+                records.append({
+                    "id": f"browser-context--{fragment_dir.name}--v1--{md.stem}",
+                    "kind": "module",
+                    "feature": "browser-context",
+                    "module": fragment_dir.name,
+                    "model": md.stem,
+                    "prompts": _read_text(md),
+                })
+
+    skills_root = V2_ROOT / "skills"
+    if skills_root.exists():
+        for skill_dir in sorted(skills_root.iterdir()):
+            if not skill_dir.is_dir():
+                continue
+            v1 = skill_dir / "v1"
+            if not v1.exists():
+                continue
+            for md in sorted(v1.glob("*.md")):
+                meta_path = v1 / f"{md.stem}.json"
+                description = ""
+                if meta_path.exists():
+                    description = _read_json(meta_path).get("description", "")
+                records.append({
+                    "id": f"skill--{skill_dir.name}--v1--{md.stem}",
+                    "kind": "skill",
+                    "name": skill_dir.name,
+                    "model": md.stem,
+                    "description": description,
+                    "prompts": _read_text(md),
+                })
+
+    return records
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -250,6 +319,11 @@ def main() -> int:
         action="store_true",
         help="Also print the assembled system prompt for each model to stdout.",
     )
+    parser.add_argument(
+        "--records-out",
+        default=str(REPO_ROOT / "build" / "v2_records.json"),
+        help="Output path for the RS records array dump (default: build/v2_records.json).",
+    )
     args = parser.parse_args()
 
     bundle = assemble(args.model, args.table_instructions)
@@ -258,8 +332,18 @@ def main() -> int:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(bundle, indent=2, ensure_ascii=False), encoding="utf-8")
 
+    records = build_records_dump()
+    records_path = Path(args.records_out)
+    records_path.parent.mkdir(parents=True, exist_ok=True)
+    records_path.write_text(json.dumps(records, indent=2, ensure_ascii=False), encoding="utf-8")
+
     print(f"Wrote {out_path.relative_to(REPO_ROOT)}")
     print(f"  models: {', '.join(sorted(bundle['models']))}")
+    print(f"Wrote {records_path.relative_to(REPO_ROOT)}")
+    record_kinds: dict[str, int] = {}
+    for r in records:
+        record_kinds[r["kind"]] = record_kinds.get(r["kind"], 0) + 1
+    print(f"  records: {len(records)} total ({', '.join(f'{k}={v}' for k, v in sorted(record_kinds.items()))})")
 
     any_unresolved = False
     for model, payload in bundle["models"].items():
