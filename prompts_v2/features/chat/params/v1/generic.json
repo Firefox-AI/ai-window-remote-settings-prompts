@@ -1,6 +1,7 @@
 {
   "version": "1.0",
-  "owner_name": "Google",
+  "model_choice_id": "0",
+  "owner_name": "",
   "is_default": false,
   "purpose": "chat",
   "service_type": "ai",
