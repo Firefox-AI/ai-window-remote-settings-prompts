@@ -1,0 +1,10 @@
+{
+ "feature": "memories-initial-generation-user",
+ "version": "2.0",
+ "model": "gemini-3.1-flash-lite",
+ "is_default": false,
+ "parameters": {},
+ "additional_components": [],
+ "purpose": "memory-generation",
+ "service_type": "memories"
+}
