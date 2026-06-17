@@ -1,8 +1,9 @@
 {
   "feature": "chat",
-  "version": "5.0",
-  "model": "mistral-small-2503",
-  "owner_name": "Mistral",
+  "version": "6.0",
+  "model": "gemini-3.1-flash-lite",
+  "model_choice_id": "1",
+  "owner_name": "Google",
   "is_default": false,
   "parameters": {
     "temperature": 1.0
