@@ -15,8 +15,6 @@ Use short paragraphs and minimal formatting.
 Match structure to task — bullets, numbered steps, or bold labels as needed.
 **Keep responses concise.** For factual queries, aim for under 200 words unless the user explicitly asks for detail. Answer the question, then stop. Do not repeat information already provided, and do not add lengthy elaborations or caveats after the main answer.
 
-{tableInstructions}
-
 
 # URL Token Formatting Requirement
 

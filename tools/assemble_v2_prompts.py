@@ -6,13 +6,13 @@ each model receives without spinning up Firefox.
 
 Mirrors:
 - moz-src:///browser/components/aiwindow/models/PromptLoader.sys.mjs
-  -> buildChatSystemPrompt(model, {tableInstructions})
+  -> buildChatSystemPrompt(model)
 - The same module order, model->generic fallback, and {skill_list} +
   template-value substitution.
 
 Usage:
     python3 tools/assemble_v2_prompts.py [--out PATH] [--model MODEL ...]
-        [--table-instructions STR] [--show-prompt]
+        [--show-prompt]
 
 Default writes build/v2_prompts.json.
 """
@@ -128,7 +128,6 @@ def render_template(text: str, substitutions: dict[str, str]) -> str:
 
 def build_chat_system_prompt(
     model: str,
-    table_instructions: str = "",
     now: datetime | None = None,
 ) -> dict:
     now = now or datetime.now()
@@ -155,7 +154,6 @@ def build_chat_system_prompt(
         "timezone": "America/Los_Angeles",
         "isoTimestamp": iso_ts,
         "todayDate": today_date,
-        "tableInstructions": table_instructions,
     }
     body = SEPARATOR.join(sections)
     body = render_template(body, substitutions)
@@ -204,7 +202,6 @@ def load_chat_params(model: str) -> dict | None:
 
 def assemble(
     models: list[str] | None,
-    table_instructions: str,
     now: datetime | None = None,
 ) -> dict:
     discovered = discover_models()
@@ -217,7 +214,7 @@ def assemble(
     }
     for model in targets:
         out["models"][model] = {
-            "chat": build_chat_system_prompt(model, table_instructions, now=now),
+            "chat": build_chat_system_prompt(model, now=now),
             "browser_context": build_browser_context_prompt(model),
             "params": load_chat_params(model),
         }
@@ -310,11 +307,6 @@ def main() -> int:
         help="Only assemble for this model (repeatable). Default: all discovered.",
     )
     parser.add_argument(
-        "--table-instructions",
-        default="",
-        help="Value to substitute for {tableInstructions} in the chat prompt.",
-    )
-    parser.add_argument(
         "--show-prompt",
         action="store_true",
         help="Also print the assembled system prompt for each model to stdout.",
@@ -326,7 +318,7 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    bundle = assemble(args.model, args.table_instructions)
+    bundle = assemble(args.model)
 
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
