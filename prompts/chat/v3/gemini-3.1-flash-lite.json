@@ -4,6 +4,7 @@
   "model": "gemini-3.1-flash-lite",
   "owner_name": "Google",
   "is_default": false,
+  "model_choice_id": "1",
   "parameters": {
     "temperature": 1.0
   },
