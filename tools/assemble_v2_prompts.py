@@ -39,7 +39,7 @@ CHAT_MODULES = [
     "response-rules",
     "browser-context",
 ]
-BROWSER_CONTEXT_FRAGMENTS = ["date", "tab", "mentions"]
+BROWSER_CONTEXT_FRAGMENTS = ["tab", "mentions"]
 GENERIC_MODEL = "generic"
 SEPARATOR = "\n\n\n"
 FRAGMENT_SEPARATOR = "\n\n"
