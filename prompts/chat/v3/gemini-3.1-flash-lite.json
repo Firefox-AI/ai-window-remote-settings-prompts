@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "3.7",
+  "version": "3.8",
   "model": "gemini-3.1-flash-lite",
   "owner_name": "Google",
   "is_default": false,
