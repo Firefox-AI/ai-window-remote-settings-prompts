@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "is_default": true,
+  "purpose": "monitor",
+  "service_type": "agent",
+  "parameters": {
+    "temperature": 1.0
+  }
+}
