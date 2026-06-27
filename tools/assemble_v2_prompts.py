@@ -229,8 +229,9 @@ def build_records_dump() -> list[dict]:
     """Emit the RS records array shape that Patch B's loadV2Records consumes.
 
     Walks prompts_v2/ once and produces one record per .md (modules + skills
-    + browser-context fragments). Matching Patch B's record filter:
-        r.kind in {"module", "skill"} and r.id contains `--v1--`.
+    + browser-context fragments). Matches Patch B's record filter
+    (r.kind in {"module", "skill"}); each record carries a numeric `version`
+    field the loader selects the highest of per module/skill.
     """
     records: list[dict] = []
     chat_root = V2_ROOT / "features" / "chat"
@@ -248,6 +249,7 @@ def build_records_dump() -> list[dict]:
                     "feature": "chat",
                     "module": module_dir.name,
                     "model": md.stem,
+                    "version": "1.0",
                     "prompts": _read_text(md),
                 })
 
@@ -266,6 +268,7 @@ def build_records_dump() -> list[dict]:
                     "feature": "browser-context",
                     "module": fragment_dir.name,
                     "model": md.stem,
+                    "version": "1.0",
                     "prompts": _read_text(md),
                 })
 
@@ -287,6 +290,7 @@ def build_records_dump() -> list[dict]:
                     "kind": "skill",
                     "name": skill_dir.name,
                     "model": md.stem,
+                    "version": "1.0",
                     "description": description,
                     "prompts": _read_text(md),
                 })
