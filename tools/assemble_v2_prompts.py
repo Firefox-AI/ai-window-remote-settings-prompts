@@ -53,6 +53,14 @@ def _read_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _rel(path: Path) -> Path:
+    """Repo-relative for display; absolute when the path lives outside the repo."""
+    try:
+        return path.relative_to(REPO_ROOT)
+    except ValueError:
+        return path
+
+
 def discover_models() -> set[str]:
     """Union of every model identifier that appears anywhere under prompts_v2."""
     models: set[str] = set()
@@ -253,6 +261,19 @@ def build_records_dump() -> list[dict]:
                     "prompts": _read_text(md),
                 })
 
+        # Chat params record per model — the v2 home for the model + inference
+        # settings the v1 main-config carried, so model+params resolve from v2.
+        params_v1 = chat_root / "params" / "v1"
+        if params_v1.exists():
+            for pj in sorted(params_v1.glob("*.json")):
+                records.append({
+                    **_read_json(pj),
+                    "id": f"chat--params--v1--{pj.stem}",
+                    "kind": "params",
+                    "feature": "chat",
+                    "model": pj.stem,
+                })
+
     bc_root = V2_ROOT / "features" / "browser-context"
     if bc_root.exists():
         for fragment_dir in sorted(bc_root.iterdir()):
@@ -336,9 +357,9 @@ def main() -> int:
     records_path.parent.mkdir(parents=True, exist_ok=True)
     records_path.write_text(json.dumps(records, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    print(f"Wrote {out_path.relative_to(REPO_ROOT)}")
+    print(f"Wrote {_rel(out_path)}")
     print(f"  models: {', '.join(sorted(bundle['models']))}")
-    print(f"Wrote {records_path.relative_to(REPO_ROOT)}")
+    print(f"Wrote {_rel(records_path)}")
     record_kinds: dict[str, int] = {}
     for r in records:
         record_kinds[r["kind"]] = record_kinds.get(r["kind"], 0) + 1
