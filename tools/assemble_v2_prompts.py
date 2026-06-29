@@ -283,14 +283,17 @@ def build_records_dump() -> list[dict]:
             for md in sorted(v1.glob("*.md")):
                 meta_path = v1 / f"{md.stem}.json"
                 description = ""
+                version = "1.0"
                 if meta_path.exists():
-                    description = _read_json(meta_path).get("description", "")
+                    meta = _read_json(meta_path)
+                    description = meta.get("description", "")
+                    version = meta.get("version", "1.0")
                 records.append({
                     "id": f"skill--{skill_dir.name}--v1--{md.stem}",
                     "kind": "skill",
                     "name": skill_dir.name,
                     "model": md.stem,
-                    "version": "1.0",
+                    "version": version,
                     "description": description,
                     "prompts": _read_text(md),
                 })
