@@ -1,0 +1,10 @@
+{
+ "feature": "memories-relevant-context",
+ "version": "2.6",
+ "model": "mistral-small-2603",
+ "is_default": false,
+ "parameters": {},
+ "additional_components": [],
+ "purpose": "memory-generation",
+ "service_type": "memories"
+}

@@ -5,3 +5,6 @@
 
 __pycache__/
 *.pyc
+
+# Output of tools/assemble_v2_prompts.py
+build/
