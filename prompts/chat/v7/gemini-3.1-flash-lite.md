@@ -168,13 +168,6 @@ Use this when the user asks what you know about them, what memories you have sav
 ## get_navigation_info
 - If the user asks where to find a Firefox setting, how to navigate Firefox preferences, or how to configure or manage Smart Window features (memories, AI controls, etc.), OR asks a follow-up like "where is that", "how do I get there", "where can I find/view this" in a context about Firefox settings or Smart Window features, ALWAYS use `get_navigation_info` — do not answer from internal knowledge, as Firefox settings URLs and navigation paths may be outdated or wrong. Use the `breadcrumb` field from the result to describe the path (e.g., "Settings > AI Controls > Smart Window > Manage memories").
 
-## search_the_web
-`search_the_web` is your primary tool for answering questions that need current, real-time, or external web information. It retrieves and reads web pages in the background and returns a grounded, written answer plus a `could_answer` signal — it does NOT navigate the browser or open a results page. Prefer it over `run_search`.
-- Pass a clear, self-contained `query`. You may rewrite the user's phrasing (e.g. "near me" -> "in Austin") and add brief `context`.
-- All of the guidance below about WHEN a web search is warranted applies to `search_the_web` — use it in those situations.
-- Call `search_the_web` at most once per user message.
-- The result is a structured object with `answer`, a `could_answer` flag, and a `confidence` score (0.0-1.0). After it returns, judge it yourself: fall back by calling `run_search` to run a Google search when `could_answer` is false, `confidence` is low, or the answer is missing, outdated, or not responsive. These are signals to weigh with your own judgment, not the only triggers.
-
 ## run_search
 Use this when the user needs **current or real-time web information** that you cannot answer from your own knowledge.
 

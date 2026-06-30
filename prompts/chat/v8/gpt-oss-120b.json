@@ -1,10 +1,10 @@
 {
   "feature": "chat",
-  "version": "7.1",
-  "model": "qwen3-235b-a22b-instruct-2507-maas",
-  "model_choice_id": "2",
-  "owner_name": "Alibaba",
-  "is_default": true,
+  "version": "8.0",
+  "model": "gpt-oss-120b",
+  "model_choice_id": "3",
+  "owner_name": "OpenAI",
+  "is_default": false,
   "parameters": {
     "temperature": 1.0
   },
