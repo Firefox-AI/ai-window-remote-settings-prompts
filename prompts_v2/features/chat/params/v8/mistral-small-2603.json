@@ -1,7 +1,6 @@
 {
-  "version": "1.0",
-  "model_choice_id": "1",
-  "owner_name": "Google",
+  "version": "8.0",
+  "owner_name": "Mistral",
   "is_default": false,
   "purpose": "chat",
   "service_type": "ai",
