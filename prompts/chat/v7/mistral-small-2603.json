@@ -5,7 +5,8 @@
   "owner_name": "Mistral",
   "is_default": false,
   "parameters": {
-    "temperature": 1.0
+    "temperature": 1.0,
+    "top_p": 0.00001
   },
   "additional_components": [
     "real-time-context-date",
