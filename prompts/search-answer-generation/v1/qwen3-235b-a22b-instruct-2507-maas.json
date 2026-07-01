@@ -1,0 +1,12 @@
+{
+  "feature": "search-answer-generation",
+  "version": "1.0",
+  "model": "qwen3-235b-a22b-instruct-2507-maas",
+  "is_default": true,
+  "parameters": {
+    "temperature": 0.2
+  },
+  "additional_components": [],
+  "purpose": "chat",
+  "service_type": "ai"
+}

@@ -1,0 +1,10 @@
+{
+  "version": "8.0",
+  "owner_name": "Mistral",
+  "is_default": false,
+  "purpose": "chat",
+  "service_type": "ai",
+  "parameters": {
+    "temperature": 1.0
+  }
+}
