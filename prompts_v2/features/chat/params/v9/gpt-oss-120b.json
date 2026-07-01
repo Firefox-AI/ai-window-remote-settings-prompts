@@ -1,0 +1,20 @@
+{
+  "version": "9.0",
+  "model_choice_id": "3",
+  "owner_name": "OpenAI",
+  "is_default": false,
+  "purpose": "chat",
+  "service_type": "ai",
+  "parameters": {
+    "temperature": 1.0
+  },
+  "modules": [
+    { "name": "identity", "version": "1.0" },
+    { "name": "model-details", "version": "1.0" },
+    { "name": "style", "version": "1.0" },
+    { "name": "skills", "version": "1.0" },
+    { "name": "trust-and-safety", "version": "1.0" },
+    { "name": "response-rules", "version": "1.0" },
+    { "name": "browser-context", "version": "1.0" }
+  ]
+}
