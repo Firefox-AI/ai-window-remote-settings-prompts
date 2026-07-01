@@ -1,5 +1,6 @@
 {
-  "version": "8.0",
+  "version": "9.0",
+  "model_choice_id": "1",
   "owner_name": "Google",
   "is_default": false,
   "purpose": "chat",
