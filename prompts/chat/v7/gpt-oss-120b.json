@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "7.1",
+  "version": "7.2",
   "model": "gpt-oss-120b",
   "model_choice_id": "3",
   "owner_name": "OpenAI",
@@ -11,7 +11,7 @@
   "model_details": {
     "model": "gpt-oss-120b",
     "ownerName": "OpenAI",
-    "labelId": "",
+    "labelId": "personal",
     "shortName": "GPT OSS 120B",
     "brandName": "GPT OSS"
   },
