@@ -1,11 +1,19 @@
 {
-  "version": "9.0",
-  "owner_name": "Mistral",
+  "version": "10.1",
+  "model_choice_id": "1",
+  "owner_name": "Google",
   "is_default": false,
   "purpose": "chat",
   "service_type": "ai",
   "parameters": {
     "temperature": 1.0
+  },
+  "model_details": {
+    "model": "gemini-flash-3.1-lite",
+    "ownerName": "Google",
+    "labelId": "fast",
+    "shortName": "Gemini 3.1 Flash Lite",
+    "brandName": "Gemini"
   },
   "modules": [
     { "name": "identity", "version": "1.0" },

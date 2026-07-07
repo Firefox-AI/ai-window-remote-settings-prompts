@@ -1,12 +1,19 @@
 {
-  "version": "9.0",
-  "model_choice_id": "2",
-  "owner_name": "Alibaba",
-  "is_default": true,
+  "version": "10.1",
+  "owner_name": "Mistral",
+  "model_choice_id": "3",
+  "is_default": false,
   "purpose": "chat",
   "service_type": "ai",
   "parameters": {
     "temperature": 1.0
+  },
+  "model_details": {
+    "model": "mistral-small-2603",
+    "ownerName": "Mistral",
+    "labelId": "personal",
+    "shortName": "Mistral Small 4",
+    "brandName": "Mistral"
   },
   "modules": [
     { "name": "identity", "version": "1.0" },

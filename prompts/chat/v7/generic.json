@@ -1,12 +1,19 @@
 {
   "feature": "chat",
-  "version": "7.0",
+  "version": "7.1",
   "model": "generic",
   "model_choice_id": "0",
   "owner_name": "",
   "is_default": false,
   "parameters": {
     "temperature": 1.0
+  },
+  "model_details": {
+    "model": "generic",
+    "ownerName": "",
+    "labelId": "",
+    "shortName": "",
+    "brandName": ""
   },
   "additional_components": [
     "real-time-context-date",

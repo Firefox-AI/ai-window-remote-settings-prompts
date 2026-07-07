@@ -1,12 +1,19 @@
 {
-  "version": "9.0",
-  "model_choice_id": "1",
-  "owner_name": "Google",
+  "version": "`10.2",
+  "model_choice_id": "0",
+  "owner_name": "",
   "is_default": false,
   "purpose": "chat",
   "service_type": "ai",
   "parameters": {
     "temperature": 1.0
+  },
+  "model_details": {
+    "model": "generic",
+    "ownerName": "",
+    "labelId": "",
+    "shortName": "",
+    "brandName": ""
   },
   "modules": [
     { "name": "identity", "version": "1.0" },

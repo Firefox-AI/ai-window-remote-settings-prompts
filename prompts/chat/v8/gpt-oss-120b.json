@@ -1,12 +1,19 @@
 {
   "feature": "chat",
-  "version": "8.0",
+  "version": "8.1",
   "model": "gpt-oss-120b",
   "model_choice_id": "3",
   "owner_name": "OpenAI",
   "is_default": false,
   "parameters": {
     "temperature": 1.0
+  },
+  "model_details": {
+    "model": "gpt-oss-120b",
+    "ownerName": "OpenAI",
+    "labelId": "",
+    "shortName": "GPT OSS 120B",
+    "brandName": "GPT OSS"
   },
   "additional_components": [
     "real-time-context-date",

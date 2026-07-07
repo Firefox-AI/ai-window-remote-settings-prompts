@@ -1,19 +1,12 @@
 {
   "feature": "chat",
-  "version": "7.2",
+  "version": "9.1",
   "model": "qwen3-235b-a22b-instruct-2507-maas",
   "model_choice_id": "2",
   "owner_name": "Alibaba",
   "is_default": true,
   "parameters": {
     "temperature": 1.0
-  },
-  "model_details": {
-    "model": "qwen3-235b-a22b-instruct-2507-maas",
-    "ownerName": "Alibaba",
-    "labelId": "allpurpose",
-    "shortName": "Qwen 3 235B",
-    "brandName": "Qwen"
   },
   "additional_components": [
     "real-time-context-date",
@@ -24,5 +17,12 @@
     "enable-table-instructions"
   ],
   "purpose": "chat",
-  "service_type": "ai"
+  "service_type": "ai",
+  "model_details": {
+    "model": "qwen3-235b-a22b-instruct-2507-maas",
+    "ownerName": "Alibaba",
+    "labelId": "allpurpose",
+    "shortName": "Qwen 3 235B",
+    "brandName": "Qwen"
+  }
 }

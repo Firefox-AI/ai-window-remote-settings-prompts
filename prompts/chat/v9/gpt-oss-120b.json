@@ -1,19 +1,11 @@
 {
   "feature": "chat",
-  "version": "7.2",
-  "model": "gemini-3.1-flash-lite",
-  "model_choice_id": "1",
-  "owner_name": "Google",
+  "version": "9.1",
+  "model": "gpt-oss-120b",
+  "owner_name": "OpenAI",
   "is_default": false,
   "parameters": {
     "temperature": 1.0
-  },
-  "model_details": {
-    "model": "gemini-flash-3.1-lite",
-    "ownerName": "Google",
-    "labelId": "fast",
-    "shortName": "Gemini 3.1 Flash Lite",
-    "brandName": "Gemini"
   },
   "additional_components": [
     "real-time-context-date",
@@ -24,5 +16,12 @@
     "enable-table-instructions"
   ],
   "purpose": "chat",
-  "service_type": "ai"
+  "service_type": "ai",
+  "model_details": {
+    "model": "gpt-oss-120b",
+    "ownerName": "OpenAI",
+    "labelId": "",
+    "shortName": "GPT OSS 120B",
+    "brandName": "GPT OSS"
+  }
 }
