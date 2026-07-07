@@ -8,6 +8,13 @@
   "parameters": {
     "temperature": 1.0
   },
+  "model_details": {
+    "model": "gemini-flash-3.1-lite",
+    "ownerName": "Google",
+    "labelId": "fast",
+    "shortName": "Gemini 3.1 Flash Lite",
+    "brandName": "Gemini"
+  },
   "additional_components": [
     "real-time-context-date",
     "real-time-context-tab",

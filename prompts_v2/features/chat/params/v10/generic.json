@@ -8,6 +8,13 @@
   "parameters": {
     "temperature": 1.0
   },
+  "model_details": {
+    "model": "generic",
+    "ownerName": "",
+    "labelId": "",
+    "shortName": "",
+    "brandName": ""
+  },
   "modules": [
     { "name": "identity", "version": "1.0" },
     { "name": "model-details", "version": "1.0" },

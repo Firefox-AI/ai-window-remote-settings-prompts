@@ -17,11 +17,11 @@
   ],
   "purpose": "chat",
   "service_type": "ai",
-    "model_details": {
+  "model_details": {
     "model": "gpt-oss-120b",
     "ownerName": "OpenAI",
     "labelId": "",
-    "collectionName": "GPT OSS 120B",
-    "shortName": "GPT OSS"
+    "shortName": "GPT OSS 120B",
+    "brandName": "GPT OSS"
   }
 }

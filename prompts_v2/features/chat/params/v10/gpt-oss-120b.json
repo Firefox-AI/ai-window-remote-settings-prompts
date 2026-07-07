@@ -8,6 +8,13 @@
   "parameters": {
     "temperature": 1.0
   },
+  "model_details": {
+    "model": "gpt-oss-120b",
+    "ownerName": "OpenAI",
+    "labelId": "",
+    "shortName": "GPT OSS 120B",
+    "brandName": "GPT OSS"
+  },
   "modules": [
     { "name": "identity", "version": "1.0" },
     { "name": "model-details", "version": "1.0" },

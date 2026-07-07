@@ -7,6 +7,13 @@
   "parameters": {
     "temperature": 1.0
   },
+  "model_details": {
+    "model": "mistral-small-2603",
+    "ownerName": "Mistral",
+    "labelId": "personal",
+    "shortName": "Mistral Small 4",
+    "brandName": "Mistral"
+  },
   "modules": [
     { "name": "identity", "version": "1.0" },
     { "name": "model-details", "version": "1.0" },

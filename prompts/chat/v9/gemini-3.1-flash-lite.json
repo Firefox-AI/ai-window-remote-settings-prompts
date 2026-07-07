@@ -22,7 +22,7 @@
     "model": "gemini-flash-3.1-lite",
     "ownerName": "Google",
     "labelId": "fast",
-    "collectionName": "Gemini Flash Lite",
-    "shortName": "Gemini"
+    "shortName": "Gemini 3.1 Flash Lite",
+    "brandName": "Gemini"
   }
 }
