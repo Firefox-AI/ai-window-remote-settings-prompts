@@ -1,6 +1,6 @@
 {
   "feature": "chat",
-  "version": "9.0",
+  "version": "9.1",
   "model": "qwen3-235b-a22b-instruct-2507-maas",
   "model_choice_id": "2",
   "owner_name": "Alibaba",
@@ -22,7 +22,7 @@
     "model": "qwen3-235b-a22b-instruct-2507-maas",
     "ownerName": "Alibaba",
     "labelId": "allpurpose",
-    "collectionName": "Qwen 3",
-    "shortName": "Qwen"
+    "shortName": "Qwen 3 235B",
+    "brandName": "Qwen"
   }
 }

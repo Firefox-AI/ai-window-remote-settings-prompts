@@ -1,12 +1,18 @@
 {
-  "version": "10.0",
-  "model_choice_id": "3",
+  "version": "10.1",
   "owner_name": "OpenAI",
   "is_default": false,
   "purpose": "chat",
   "service_type": "ai",
   "parameters": {
     "temperature": 1.0
+  },
+  "model_details": {
+    "model": "gpt-oss-120b",
+    "ownerName": "OpenAI",
+    "labelId": "",
+    "shortName": "GPT OSS 120B",
+    "brandName": "GPT OSS"
   },
   "modules": [
     { "name": "identity", "version": "1.0" },
