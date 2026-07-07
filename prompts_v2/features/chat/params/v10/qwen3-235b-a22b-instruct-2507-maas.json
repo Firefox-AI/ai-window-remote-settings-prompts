@@ -1,7 +1,8 @@
 {
-  "version": "9.0",
-  "owner_name": "Google",
-  "is_default": false,
+  "version": "10.0",
+  "model_choice_id": "2",
+  "owner_name": "Alibaba",
+  "is_default": true,
   "purpose": "chat",
   "service_type": "ai",
   "parameters": {

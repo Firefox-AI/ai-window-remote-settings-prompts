@@ -1,0 +1,29 @@
+{
+  "feature": "chat",
+  "version": "9.0",
+  "model": "mistral-small-2603",
+  "owner_name": "Mistral",
+  "is_default": false,
+  "model_choice_id": "3",
+  "parameters": {
+    "temperature": 1.0,
+    "top_p": 0.00001
+  },
+  "additional_components": [
+    "real-time-context-date",
+    "real-time-context-tab",
+    "memories-relevant-context",
+    "real-time-context-mentions",
+    "disable-table-instructions",
+    "enable-table-instructions"
+  ],
+  "purpose": "chat",
+  "service_type": "ai",
+  "model_details": {
+    "model": "mistral-small-2603",
+    "ownerName": "Mistral",
+    "labelId": "personal",
+    "collectionName": "Mistral Small 4",
+    "shortName": "Mistral Small"
+  }
+}
