@@ -1,6 +1,6 @@
 {
-  "version": "9.0",
-  "owner_name": "Mistral",
+  "version": "10.0",
+  "owner_name": "Google",
   "is_default": false,
   "purpose": "chat",
   "service_type": "ai",
