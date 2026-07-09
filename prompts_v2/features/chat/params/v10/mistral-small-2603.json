@@ -1,7 +1,6 @@
 {
   "version": "10.1",
   "owner_name": "Mistral",
-  "model_choice_id": "3",
   "is_default": false,
   "purpose": "chat",
   "service_type": "ai",

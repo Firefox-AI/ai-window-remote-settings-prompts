@@ -1,5 +1,6 @@
 {
-  "version": "10.1",
+  "version": "11.0",
+  "model_choice_id": "1",
   "owner_name": "Google",
   "is_default": false,
   "purpose": "chat",
@@ -8,10 +9,10 @@
     "temperature": 1.0
   },
   "model_details": {
-    "model": "gemini-flash-2.5-lite",
+    "model": "gemini-flash-3.1-lite",
     "ownerName": "Google",
     "labelId": "fast",
-    "shortName": "Gemini 2.5 Flash Lite",
+    "shortName": "Gemini 3.1 Flash Lite",
     "brandName": "Gemini"
   },
   "modules": [
