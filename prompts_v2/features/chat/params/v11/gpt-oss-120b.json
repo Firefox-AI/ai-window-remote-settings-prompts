@@ -1,6 +1,6 @@
 {
-  "version": "10.1",
-  "owner_name": "Google",
+  "version": "11.0",
+  "owner_name": "OpenAI",
   "is_default": false,
   "purpose": "chat",
   "service_type": "ai",
@@ -8,11 +8,11 @@
     "temperature": 1.0
   },
   "model_details": {
-    "model": "gemini-flash-2.5-lite",
-    "ownerName": "Google",
-    "labelId": "fast",
-    "shortName": "Gemini 2.5 Flash Lite",
-    "brandName": "Gemini"
+    "model": "gpt-oss-120b",
+    "ownerName": "OpenAI",
+    "labelId": "personal",
+    "shortName": "GPT OSS 120B",
+    "brandName": "GPT OSS"
   },
   "modules": [
     { "name": "identity", "version": "1.0" },
