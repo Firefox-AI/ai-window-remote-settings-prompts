@@ -1,8 +1,8 @@
 {
  "feature": "memories-initial-generation-user",
- "version": "1.5",
+ "version": "1.6",
  "model": "gemini-2.5-flash-lite",
- "is_default": true,
+ "is_default": false,
  "parameters": {},
  "additional_components": [],
  "purpose": "memory-generation",
