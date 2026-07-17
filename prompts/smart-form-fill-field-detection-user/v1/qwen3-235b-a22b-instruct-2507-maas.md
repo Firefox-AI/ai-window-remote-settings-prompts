@@ -4,9 +4,6 @@ Page title:
 Page url:
 {url}
 
-Form content:
-{content}
-
 Fields to classify:
 {fields}
 
