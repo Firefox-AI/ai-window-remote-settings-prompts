@@ -1,7 +1,7 @@
 {
   "feature": "smart-form-fill-field-detection-system",
   "version": "1.0",
-  "model": "qwen3-235b-a22b-instruct-2507-maas",
+  "model": "gemini-3.1-flash-lite",
   "is_default": true,
   "parameters": {},
   "additional_components": ["smart-form-fill-field-detection-user"],
