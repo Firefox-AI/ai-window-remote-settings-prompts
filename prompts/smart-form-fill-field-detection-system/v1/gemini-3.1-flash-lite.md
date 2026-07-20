@@ -4,7 +4,7 @@ You will be given: the page (url + title), a list of fields to classify (each wi
 
 For each field in the list, assign the single best-matching type from the
 provided list of valid types, using the field's own attributes plus the
-surrounding form content and page context to disambiguate.
+surrounding fields to disambiguate.
 
 Rules:
 - Choose the type ONLY from the provided list of valid types. Never invent a new

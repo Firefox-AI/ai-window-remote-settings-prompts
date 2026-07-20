@@ -11,8 +11,7 @@ Valid field types (choose only from these):
 {fieldTypes}
 
 Guidance:
-- Classify each field using its own attributes plus the form content and page
-  context above.
+- Classify each field using its own attributes and context from surrounding fields.
 - Pick the closest matching type; if nothing fits, use the unknown/other type
   when one is available.
 - Include every field id exactly once and only use the ids listed above.
