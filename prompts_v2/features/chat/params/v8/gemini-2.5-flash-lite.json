@@ -8,12 +8,37 @@
     "temperature": 1.0
   },
   "modules": [
-    { "name": "identity", "version": "1.0" },
-    { "name": "model-details", "version": "1.0" },
-    { "name": "style", "version": "1.0" },
-    { "name": "skills", "version": "1.0" },
-    { "name": "trust-and-safety", "version": "1.0" },
-    { "name": "response-rules", "version": "1.0" },
-    { "name": "browser-context", "version": "1.0" }
+    {
+      "name": "identity",
+      "version": "1.0"
+    },
+    {
+      "name": "language",
+      "version": "1.0"
+    },
+    {
+      "name": "model-details",
+      "version": "1.0"
+    },
+    {
+      "name": "style",
+      "version": "1.0"
+    },
+    {
+      "name": "skills",
+      "version": "1.0"
+    },
+    {
+      "name": "trust-and-safety",
+      "version": "1.0"
+    },
+    {
+      "name": "response-rules",
+      "version": "1.0"
+    },
+    {
+      "name": "browser-context",
+      "version": "1.0"
+    }
   ]
 }
