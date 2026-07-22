@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "is_default": true,
+  "purpose": "smart-form-fill",
+  "service_type": "ai",
+  "parameters": {},
+  "modules": [
+    { "name": "field-detection-system-instructions", "version": "1.0" },
+    { "name": "field-detection-user-data", "version": "1.0" }
+  ]
+}
