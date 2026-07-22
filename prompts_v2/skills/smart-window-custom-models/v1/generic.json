@@ -1,0 +1,4 @@
+{
+  "version": "1.0",
+  "description": "Use this skill whenever a user asks about connecting their own AI model to Firefox Smart Window, also called BYOM (bring your own model) or BYO endpoint. Trigger when users ask how to use a custom model, how to connect OpenRouter, how to use Ollama or Lemonade Server with Smart Window, what the \"Custom: Use your own LLM\" option is, how to enter a model name or API key, or what a model endpoint is. Also trigger for questions like \"can I use my own ChatGPT API key?\", \"how do I run a local model?\", \"I want to use a free model\", or \"how do I set up a custom endpoint in Smart Window?\" This is a power-user feature — be clear about the caveats upfront."
+}
