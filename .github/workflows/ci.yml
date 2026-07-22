@@ -7,7 +7,9 @@ on:
       - stage
     paths:
       - 'prompts/**'
+      - 'prompts_v2/**'
       - 'test.py'
+      - 'test_v2.py'
       - '.github/workflows/ci.yml'
 
 jobs:
@@ -37,6 +39,6 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest test.py -vv --tb=long -s
+          pytest test.py test_v2.py -vv --tb=long -s
         env:
           THIS_BRANCH: ${{ github.base_ref }}
