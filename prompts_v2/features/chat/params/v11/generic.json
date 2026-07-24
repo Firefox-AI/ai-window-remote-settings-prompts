@@ -1,5 +1,5 @@
 {
-  "version": "11.0",
+  "version": "11.1",
   "model_choice_id": "0",
   "owner_name": "",
   "is_default": false,
@@ -21,7 +21,7 @@
     { "name": "style", "version": "1.0" },
     { "name": "skills", "version": "1.0" },
     { "name": "trust-and-safety", "version": "1.0" },
-    { "name": "response-rules", "version": "1.0" },
+    { "name": "response-rules", "version": "1.2" },
     { "name": "browser-context", "version": "1.0" }
   ]
 }
