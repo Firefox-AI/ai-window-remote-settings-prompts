@@ -1,7 +1,7 @@
-Generate conversation-starter cards for the following {memory_count} memories.
+Generate conversation-starter cards for the following {memoryCount} memories.
 
-Follow all instructions. Return exactly {memory_count} objects in the same order as the input. Return only the valid JSON array.
+Follow all instructions. Return exactly {memoryCount} objects in the same order as the input. Return only the valid JSON array.
 
 <memory_input>
-{memories}
+{memoryInput}
 </memory_input>
