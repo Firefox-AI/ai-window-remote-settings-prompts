@@ -66,9 +66,9 @@ Every `status` must:
     * `You seem to be`
 
 Prefer concrete descriptions such as:
-* `You were exploring waterfall routes, a seven-day Ring Road itinerary, and quieter geothermal pools for an Iceland trip.`
-* `You were comparing quiet mechanical keyboards for programming, with recent attention on low-profile models and switch noise.`
-* `You had chosen your apartment balcony for an herb garden and were researching soil and low-light herbs.`
+* `Exploring waterfall routes, a seven-day Ring Road itinerary, and quieter geothermal pools for an Iceland trip.`
+* `Quiet mechanical keyboard options narrowed to two: one with the lowest dB level and one with LEDs.`
+* `Basil and thyme selected and added to the cart for the herb garden. Research into suitable soil remains open.`
 
 The `pages` array is ordered from oldest to newest. Later entries represent more recent browsing activity.
 The `chats` array is ordered from oldest to newest. Later entries represent more recent conversations.
@@ -81,7 +81,7 @@ Return only a valid JSON array. The array must contain exactly one object for ea
     {
         "id": <numeric id of the input memory>,
         "headline": "Pick up <2–3 word activity>",
-        "status": "<one sentence containing 15–20 words>"
+        "status": "<one to two sentences containing 15–20 words overall>"
     },
     ...
 ]
