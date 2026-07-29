@@ -6,7 +6,7 @@ Each input item represents one memory and may contain:
 * `reasoning`: an explanation of why the memory was created
 * `frecency`: a metric combining recency and frequency of access of a resource
 * `pages`: a list of webpage titles, ordered from least to most recently visited
-* `chat`: optional conversation messages related to the memory, ordered chronologically
+* `chats`: optional conversation messages related to the memory, ordered chronologically
 
 Your output will be displayed as clickable cards that help the user resume activities already in progress.
 

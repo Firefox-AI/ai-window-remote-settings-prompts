@@ -1,7 +1,6 @@
 {
   "version": "1.0",
   "is_default": true,
-  "purpose": "resume-activity",
   "service_type": "ai",
   "parameters": {
     "response_format": {
