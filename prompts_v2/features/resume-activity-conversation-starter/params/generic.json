@@ -2,41 +2,7 @@
   "version": "1.0",
   "is_default": true,
   "service_type": "ai",
-  "parameters": {
-    "response_format": {
-      "type": "json_schema",
-      "json_schema": {
-        "type": "array",
-        "minItems": 1,
-        "items": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["id", "headline", "status"],
-          "properties": {
-            "id": {
-              "type": "integer",
-              "minimum": 0,
-              "description":
-                "The exact numeric id of the input memory this card describes."
-            },
-            "headline": {
-              "type": "string",
-              "pattern": "^Pick up \\S+( \\S+){1,2}$",
-              "description":
-                "Invitation beginning with 'Pick up' followed by a 2-3 word activity phrase, no ending punctuation."
-            },
-            "status": {
-              "type": "string",
-              "minLength": 60,
-              "maxLength": 220,
-              "description":
-                "One sentence describing what appears to be in progress (15-20 words)."
-            }
-          }
-        }
-      }
-    }
-  },
+  "parameters": {},
   "modules": [
     { "name": "system-instructions", "version": "1.0" },
     { "name": "user-data", "version": "1.0" }
