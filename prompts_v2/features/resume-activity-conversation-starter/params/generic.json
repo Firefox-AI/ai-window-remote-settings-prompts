@@ -2,6 +2,7 @@
   "version": "1.0",
   "is_default": true,
   "service_type": "ai",
+  "purpose": "convo-starters-sidebar",
   "parameters": {
     "response_format": {
       "type": "json_schema",
