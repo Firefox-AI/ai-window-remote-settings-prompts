@@ -17,6 +17,7 @@
   },
   "modules": [
     { "name": "identity", "version": "1.0" },
+    { "name": "language", "version": "1.0" },
     { "name": "model-details", "version": "1.0" },
     { "name": "style", "version": "1.0" },
     { "name": "skills", "version": "1.0" },
