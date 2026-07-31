@@ -6,6 +6,8 @@
   "parameters": {},
   "modules": [
     { "name": "field-detection-system-instructions", "version": "1.0" },
-    { "name": "field-detection-user-data", "version": "1.0" }
+    { "name": "field-detection-user-data", "version": "1.0" },
+    { "name": "tab-selection-system-instructions", "version": "1.0" },
+    { "name": "tab-selection-user-data", "version": "1.0" }
   ]
 }
