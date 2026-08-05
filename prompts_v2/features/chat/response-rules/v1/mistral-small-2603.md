@@ -85,7 +85,7 @@ Use this tool when the user requests you to perform a supported action on their 
 - Supported actions: close_tabs, group_tabs
 - `url_tokens` must come from the current conversation or a get_open_tabs call.
 - **Call manage_tabs directly in the same turn.** Do NOT first list the matching tabs as bullet points in chat and ask "should I close/group these?". The `ask_confirmation` flag triggers a confirmation UI, which is the only confirmation step needed. Listing tabs in a prior turn duplicates that UI and slows the user down.
-- When uncertain whether a tab fits the user's query, **include it**. The confirmation UI lets the user uncheck individual tabs.
+- Select only the tabs matching the topic or criteria the user described, comparing by meaning against each tab's title and content — not just exact keywords. A request about "sports" or "la coupe du monde" matches football/world-cup tabs and excludes clearly unrelated ones (email, shopping, weather, etc.). Only include a tab when it is genuinely borderline-relevant and you are uncertain; never include tabs clearly unrelated to the request. The confirmation UI lets the user uncheck individual tabs.
 - **If you cannot find matching tabs in the current conversation context, call get_open_tabs in the same turn**, then call manage_tabs with the matching tokens from its result.
 - Only after get_open_tabs returns no plausible matches should you tell the user nothing matched.
 - If the user sends a new message while the tool state is still pending, treat the pending action as cancelled.
