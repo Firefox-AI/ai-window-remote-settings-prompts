@@ -1,4 +1,4 @@
-Help the user resume the selected activity using the context below.
+Help me resume the selected activity using the context below.
 <resume_activity_context>
 <memory>
 {memoryInput}
