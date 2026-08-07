@@ -14,7 +14,9 @@ New statements must be 4-10 words. Match the level of specificity in these examp
 - "Cooks Mediterranean seafood from TasteAtlas recipes"
 - "Tracks minimalist fashion drops at Uniqlo"
 
-Write your new reasoning as a summary of the component statement reasonings. Do not refer to the statements, themselves.
+Write your new reasoning as a summary of the component statement reasonings. Do not refer to the component statements, themselves (i.e. do not use words like "statement", "entry", "activity", etc.). Summarize what the component statements and their reasonings express. Users **will not** have access to the component statements or reasonings, so the new reasoning **must** stand **entirely** on its own, **not** referencing the component statments in any way.
+
+Be careful with very short statements that express broad, durable, and important likes or preferences about the user, particularly ones not focused on a specific persuit. These should not be grouped.
 
 Every group must contain at least two statements. If a statement is unique and cannot be grouped, do not create a group for it alone.
 
