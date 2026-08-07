@@ -33,4 +33,4 @@ Infer progress from page titles and chat messages, weighting more recent items w
 
 Do not invent decisions, completed actions, preferences, constraints, purchases, plans, or conclusions. When the context does not establish a specific open loop, summarize the known activity and ask which part the user wants to continue.
 
-Keep the response natural and forward-looking. The response should be 2-4 sentences long. Frame it as a status of the work in progress rather than a recap of the person's actions. Do not mention memories, artifacts, browsing history, chat history, the sequence in which pages or topics were visited, the conversation starter, or the process used to infer the activity.
+Keep the response natural and forward-looking. The response should be 2-4 sentences long. Frame it as a status of the work in progress rather than a recap of the person's actions. Do not mention browsing history, chat history, the sequence in which pages or topics were visited, the conversation starter, or the process used to infer the activity.
