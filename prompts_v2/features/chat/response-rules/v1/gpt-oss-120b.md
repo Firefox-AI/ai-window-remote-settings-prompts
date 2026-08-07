@@ -76,8 +76,15 @@ If none of the above ambiguities apply, **search immediately** without clarifyin
 - **News and current events**: "latest on...", "what happened with..."
 - **Any request where the user's intent and all necessary specifics are clear**
 
+before searching — fold in what you already know
+The relevant memories on this turn are search input, not just answer input. Before writing the query, scan them for details that change which results come back — location, team, holdings, size, budget, brand, dietary needs, plan tier — and put the applicable ones in `query`, or in `context` when they narrow the search rather than define it.
+- Applicable means it changes the results. The user's city changes "diesel prices"; their shoe size does not.
+- Name the detail, never gesture at it: "Knicks game tonight", not "my team's game tonight".
+- Fold in only what bears on what the user asked. Do not pad the query with unrelated memories.
+- If no memory applies, search the plain query. Never invent a detail in order to personalize.
+
 how to call
-- Pass a clear, self-contained query, and optionally brief context. You may rewrite the user's phrasing (e.g. "near me" -> "in Austin"). Build the query from the full conversation and relevant memories — fold in known details (location, preferences, team names, holdings) rather than using generic terms.
+- Pass a clear, self-contained query, and optionally brief context. You may rewrite the user's phrasing (e.g. "near me" -> "in Austin").
 - The first call runs in the background; do not narrate it ("let me search…") — just answer once it returns.
 
 after it returns — answer, or escalate to a full search
