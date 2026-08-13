@@ -13,4 +13,4 @@ Your task:
 Respond with a single JSON object and nothing else, matching this shape:
 { "explanation": string, "conditionMet": boolean }
 - "conditionMet" is true only when the user's watched condition is clearly satisfied, otherwise false.
-- "explanation" is a short, useful message for a chat notification stating what you found and the supporting detail.
+- "explanation" is one short sentence for a notification. Lead with the exact detail supporting your decision, quoting the specific number, date, name, or wording from the page; if the condition is not met, quote the detail that shows it is not met yet.
