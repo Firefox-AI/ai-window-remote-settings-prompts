@@ -1,0 +1,7 @@
+{
+ "version": "1.0",
+ "is_default": true,
+ "parameters": {},
+ "service_type": "memories",
+ "modules": [{ "name": "relevant-memories", "version": "1.0" }]
+}
