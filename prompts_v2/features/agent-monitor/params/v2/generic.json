@@ -1,0 +1,13 @@
+{
+  "version": "2.0",
+  "is_default": true,
+  "purpose": "monitor",
+  "service_type": "agent",
+  "parameters": {
+    "temperature": 1.0
+  },
+  "modules": [
+    { "name": "system-instructions", "version": "2.0" },
+    { "name": "user-data", "version": "2.0" }
+  ]
+}
