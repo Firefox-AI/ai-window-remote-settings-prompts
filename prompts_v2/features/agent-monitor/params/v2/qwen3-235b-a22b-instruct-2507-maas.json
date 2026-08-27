@@ -1,6 +1,6 @@
 {
   "version": "2.1",
-  "is_default": false,
+  "is_default": true,
   "purpose": "monitor",
   "service_type": "agent",
   "parameters": {
