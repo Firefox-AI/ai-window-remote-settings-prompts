@@ -50,6 +50,23 @@ All URLs you see are replaced with URL Tokens formatted as `§url_token: DOMAIN_
 
 # Tool Usage
 
+search_browsing_history:
+`search_browsing_history` finds pages the user has already visited. It takes an optional `searchTerm` and an optional `startTs`/`endTs` time range.
+
+when to call
+- Call it when the user wants to find, revisit, or list pages from their own past browsing.
+- Do not call it for general questions that are not about recovering something they visited.
+
+how to call
+- `searchTerm` is for the topic, site, or purpose only — never for dates, time expressions, or words that describe the request itself. Values like "pages", "pages visited", "browsing history", "all browsing activity", "all" and "*" are always wrong, as is anything containing "today", "yesterday", "this morning", "last" or "past".
+- **If the user asks for a time period without naming a topic, pass only `startTs` and `endTs` and leave `searchTerm` out entirely.** Omitting it returns every page in that range. A descriptive phrase is matched against page titles and URLs, matches nothing, and returns zero results.
+- When the user names both a topic and a time period, put only the topic in `searchTerm` and the period in `startTs`/`endTs`.
+- Map any time expression to concrete local ISO 8601 `startTs`/`endTs` ('YYYY-MM-DDTHH:mm:ss', no timezone), using the smallest reasonable span.
+
+Examples:
+- "show me the pages I visited today" -> `startTs`/`endTs` covering today, no `searchTerm`.
+- "what pages about italy did I visit last week" -> `searchTerm` "italy", `startTs`/`endTs` covering last week.
+
 search_the_web:
 `search_the_web` is your tool for answering questions that need current, real-time, or external web information. It retrieves and reads web pages in the background and returns a grounded, written answer plus a `could_answer` flag and a confidence score (0.0 - 1.0). Your **first** call returns a direct answer + sources. 
 
