@@ -1,8 +1,12 @@
 {
   "version": "1.7",
-  "is_default": true,
+  "is_default": false,
   "purpose": "aitab",
   "service_type": "ai",
+  "model_details": {
+    "model": "mistral-small-2603",
+    "ownerName": "Mistral"
+  },
   "parameters": {
     "temperature": 0.7
   },
