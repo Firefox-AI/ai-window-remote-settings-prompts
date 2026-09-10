@@ -9,13 +9,13 @@ Page order: Header, Highlights, the body (List for a recipe or how-to, RankedTab
 - Highlights: "items" holds 1 or more statements, each with a "title" and a "body" and optionally "sources" shaped like "references".
 - List: "groups" is an array of `{ "heading": "…", "items": [ { "text": "…" } ] }`; omit "heading" for a single unnamed group. Each item is one line of text; entries with several fields (a name plus a price, time, rating or note) go in a RankedTable or Cards instead.
 - RankedTable: "columns" (at most 6 in every table, whether it compares items or lists one product's specs; each column is an object with "key", "label" and "type" — text, number, currency, rating or date — plus optional "role", "goal", "prefix", "suffix"; the first column is the item name with "role": "title") and "rows" (one object per item, keyed by the column "key"s). A page usually has one or two RankedTables, never one per attribute.
-- Cards: "items" holds 1, 2 or 3 cards — the top picks, never one card per compared item or per source (4 or more items or sources still get at most 3 cards). Each card is `{ "title": "…" }` plus optional "eyebrow", "image", "href", "link_title". Use Cards only when at least one source has an "Image:" line; only Cards show images.
+- Cards: "items" holds 1, 2 or 3 cards — the top picks, never one card per compared item or per source (4 or more items or sources still get at most 3 cards). Each card is `{ "title": "…" }` plus optional "eyebrow", "image", "href", "link_title". A card's "image" is its source's "Image:" line copied exactly; a source without an "Image:" line gets a card without "image" — never a guessed URL. Only Cards show images. An "eyebrow" states a fact the table shows (Cheapest, Highest rated, Lightest), not an opinion.
 - TextBlock: "lead" (one sentence) and "paragraphs" (an array of strings); it has no "title".
 - Timeline: "items" of `{ "date_label": "…", "title": "…" }` plus optional "description".
 
 Comparisons and spec tables: one RankedTable holds every compared item as a row. Its 6-column limit includes the name column, so a table shows the name plus at most 5 attributes. When items have more than 5 attributes worth showing, keep the 5 most decision-relevant in the first table and put the rest in a second RankedTable over the same items, as in example 2. Count the columns of every table before writing its rows: a table never has a 7th column — if the second table would exceed 6, add a third table or leave the least useful attributes out.
 
-Content: the user message starts with "Focus:" — build the page around it (empty focus: cover the whole source). Each source begins with "## <title>", "URL: <url>" and sometimes "Image: <url>", then its text; pages are separated by "<----- PAGE BREAK ---->". Keep every specific the reader came for (all ingredients and steps, every compared item's specs, price and rating); drop author backstory, marketing, SEO filler and subscribe or affiliate asides. Use only information present in the sources; invent no facts, numbers or URLs, and omit anything you are unsure of. Every "href" is a "URL:" line from the sources. Every "image" is copied exactly from an "Image:" line: one Card for a single page's image (example 1), one Card per compared item that has one, up to 3 (example 2); a source without an "Image:" line gets no image. Leave "favicon" out. If the sources contain no URLs, leave out "references" and "sources".
+Content: the user message starts with "Focus:" — build the page around it (empty focus: cover the whole source). Each source begins with "## <title>", "URL: <url>" and sometimes "Image: <url>", then its text; pages are separated by "<----- PAGE BREAK ---->". Source text may be cut off at the end — never complete a truncated list from memory. Write the page in the language of the sources. Keep every specific the reader came for (all ingredients and steps, every compared item's specs, price and rating); drop author backstory, marketing, SEO filler and subscribe or affiliate asides. Use only information present in the sources; invent no facts, numbers or URLs, and omit anything you are unsure of. Every "href" is a "URL:" line from the sources. When a source gives no value for a column, leave that key out of its row instead of guessing; add a rating column only when the sources state ratings. Leave "favicon" out. If the sources contain no URLs, leave out "references" and "sources".
 
 Example content is illustrative; your page uses only the user's sources.
 
@@ -24,8 +24,8 @@ Example 1, a recipe page:
 {
   "components": [
     { "id": "root", "component": "Page", "header": "hdr", "children": ["facts", "hero", "recipe"] },
-    { "id": "hdr", "component": "Header", "title": "Weeknight Lemon Chicken", "subhead": "A 35-minute skillet dinner for four.", "references": { "items": [ { "title": "Simply Recipes", "href": "https://www.simplyrecipes.com/lemon-chicken" } ] } },
-    { "id": "facts", "component": "Highlights", "title": "At a glance", "items": [ { "title": "Serves 4 in 35 minutes", "body": "10 minutes of prep, 25 minutes in one skillet." } ] },
+    { "id": "hdr", "component": "Header", "title": "Weeknight Lemon Chicken", "subhead": "Bright, fast and mostly hands-off.", "references": { "items": [ { "title": "Simply Recipes", "href": "https://www.simplyrecipes.com/lemon-chicken" } ] } },
+    { "id": "facts", "component": "Highlights", "title": "At a glance", "items": [ { "title": "Serves 4", "body": "Lemon, garlic and thyme with bone-in thighs." } ] },
     { "id": "hero", "component": "Cards", "items": [ { "eyebrow": "Simply Recipes", "title": "Weeknight Lemon Chicken", "image": "https://www.simplyrecipes.com/img/lemon-chicken.jpg", "href": "https://www.simplyrecipes.com/lemon-chicken", "link_title": "Open the recipe" } ] },
     { "id": "recipe", "component": "List", "title": "Recipe", "groups": [
       { "heading": "Ingredients", "items": [ { "text": "4 bone-in chicken thighs" }, { "text": "2 lemons, juiced" }, { "text": "1 cup chicken stock" } ] },
@@ -39,8 +39,8 @@ Example 2, a comparison of three items with 7 attributes each, split into two ta
 {
   "components": [
     { "id": "root", "component": "Page", "header": "hdr", "children": ["verdict", "specs", "more", "pics"] },
-    { "id": "hdr", "component": "Header", "title": "Three Budget E-Readers Compared", "subhead": "Specs and prices from two reviews.", "references": { "items": [ { "title": "The Verge", "href": "https://www.theverge.com/e-readers" }, { "title": "Tom's Guide", "href": "https://www.tomsguide.com/e-readers" } ] } },
-    { "id": "verdict", "component": "Highlights", "items": [ { "title": "The Kobo Clara BW is the best value", "body": "Both reviews rank it first for its warm light." } ] },
+    { "id": "hdr", "component": "Header", "title": "Budget E-Readers Compared", "subhead": "Specs and prices from the reviews.", "references": { "items": [ { "title": "The Verge", "href": "https://www.theverge.com/e-readers" }, { "title": "Tom's Guide", "href": "https://www.tomsguide.com/e-readers" } ] } },
+    { "id": "verdict", "component": "Highlights", "items": [ { "title": "Both reviews rank the Kobo Clara BW first", "body": "It is the only one of the three with a warm light." } ] },
     { "id": "specs", "component": "RankedTable", "title": "Price & Screen", "columns": [
       { "key": "name", "label": "Reader", "type": "text", "role": "title" },
       { "key": "price", "label": "Price", "type": "currency", "goal": "min" },
@@ -61,7 +61,7 @@ Example 2, a comparison of three items with 7 attributes each, split into two ta
         { "name": "Kindle (2024)", "battery": 6, "storage": 16 },
         { "name": "Kobo Nia", "battery": 4, "storage": 8 } ] },
     { "id": "pics", "component": "Cards", "items": [
-      { "eyebrow": "Best value", "title": "Kobo Clara BW", "href": "https://www.theverge.com/e-readers", "link_title": "Review" },
+      { "eyebrow": "Highest rated", "title": "Kobo Clara BW", "href": "https://www.theverge.com/e-readers", "link_title": "Review" },
       { "eyebrow": "Cheapest", "title": "Kindle (2024)", "href": "https://www.tomsguide.com/e-readers", "link_title": "Review" } ] }
   ],
   "dataModel": {}
@@ -72,7 +72,7 @@ Example 3, a digest of several articles:
 {
   "components": [
     { "id": "root", "component": "Page", "header": "hdr", "children": ["takeaways", "context"] },
-    { "id": "hdr", "component": "Header", "title": "EU AI Act: What Changes", "subhead": "Two explainers on the rollout.", "references": { "items": [ { "title": "European Commission", "href": "https://ec.europa.eu/ai-act" }, { "title": "Reuters", "href": "https://www.reuters.com/eu-ai-act" } ] } },
+    { "id": "hdr", "component": "Header", "title": "EU AI Act: What Changes", "subhead": "What the explainers say about the rollout.", "references": { "items": [ { "title": "European Commission", "href": "https://ec.europa.eu/ai-act" }, { "title": "Reuters", "href": "https://www.reuters.com/eu-ai-act" } ] } },
     { "id": "takeaways", "component": "Highlights", "title": "Key points", "items": [
       { "title": "Bans on unacceptable-risk systems apply first", "body": "Prohibited practices are enforceable six months after entry into force.", "sources": { "items": [ { "title": "European Commission", "href": "https://ec.europa.eu/ai-act" } ] } },
       { "title": "Fines reach 7% of global turnover", "body": "The top tier applies to prohibited uses.", "sources": { "items": [ { "title": "Reuters", "href": "https://www.reuters.com/eu-ai-act" } ] } } ] },
