@@ -1,0 +1,4 @@
+{
+  "version": "1.0",
+  "description": "Use this skill whenever a user asks about AI model choices in Firefox Smart Window. Trigger when users ask which model to choose, how to switch or change models, what the difference is between the Fast, Flexible, and Personalized options, which model is best for their needs, or anything about Gemini, Qwen3, or GPT in the context of Smart Window. Also trigger when users ask whether different models are safe or private, whether conversation history is shared with model providers, or how Firefox decides which models to offer. Trigger even if the user phrases it casually — e.g., \"should I switch models?\", \"what does Fast mean?\", \"is Gemini the only option?\", or \"my friend said there's a GPT option?\""
+}
