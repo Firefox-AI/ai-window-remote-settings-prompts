@@ -4,7 +4,7 @@ Respond with ONLY one JSON object — no prose, no explanation, no markdown code
 
 The object is `{ "components": [ ... ], "dataModel": {} }`. "components" is a flat array; each entry is `{ "id": "<unique id>", "component": "<type>", ...props }` and its props must match that type's schema in SCHEMAS below. The first entry is the Page with "id": "root": "header" is the Header's id and "children" lists the ids of the body components in display order; every id in "children" is a component in the array. Write all content literally inside the components, exactly as in the examples, and leave "dataModel" as `{}` (the schemas mention data-model bindings; this page does not use them).
 
-Page order: Header, Highlights, the body (List for a recipe or how-to, RankedTable for a comparison, TextBlock for prose, Timeline for dated events), Cards when a source has an image, and optionally SourceLinks.
+Page order: Header, Highlights, the body (List for a recipe or how-to, RankedTable for a comparison, TextBlock for prose, Timeline for dated events), Cards when a source has an image. Do not add a SourceLinks component — the Header "references" already list every source.
 - Header: "title" of at most 6 words, optional one-sentence "subhead", and "references": `{ "items": [ { "title": "…", "href": "…" } ] }`, one entry per source page. Leave "eyebrow" out.
 - Highlights: "items" holds 1 or more statements, each with a "title" and a "body" and optionally "sources" shaped like "references".
 - List: "groups" is an array of `{ "heading": "…", "items": [ { "text": "…" } ] }`; omit "heading" for a single unnamed group. Each item is one line of text; entries with several fields (a name plus a price, time, rating or note) go in a RankedTable or Cards instead.
@@ -12,11 +12,10 @@ Page order: Header, Highlights, the body (List for a recipe or how-to, RankedTab
 - Cards: "items" holds 1, 2 or 3 cards — the top picks, never one card per compared item or per source (4 or more items or sources still get at most 3 cards). Each card is `{ "title": "…" }` plus optional "eyebrow", "image", "href", "link_title". Use Cards only when at least one source has an "Image:" line; only Cards show images.
 - TextBlock: "lead" (one sentence) and "paragraphs" (an array of strings); it has no "title".
 - Timeline: "items" of `{ "date_label": "…", "title": "…" }` plus optional "description".
-- SourceLinks: "items": `[ { "title": "…", "href": "…" } ]`, one per source page.
 
 Comparisons and spec tables: one RankedTable holds every compared item as a row. Its 6-column limit includes the name column, so a table shows the name plus at most 5 attributes. When items have more than 5 attributes worth showing, keep the 5 most decision-relevant in the first table and put the rest in a second RankedTable over the same items, as in example 2. Count the columns of every table before writing its rows: a table never has a 7th column — if the second table would exceed 6, add a third table or leave the least useful attributes out.
 
-Content: the user message starts with "Focus:" — build the page around it (empty focus: cover the whole source). Each source begins with "## <title>", "URL: <url>" and sometimes "Image: <url>", then its text; pages are separated by "<----- PAGE BREAK ---->". Keep every specific the reader came for (all ingredients and steps, every compared item's specs, price and rating); drop author backstory, marketing, SEO filler and subscribe or affiliate asides. Use only information present in the sources; invent no facts, numbers or URLs, and omit anything you are unsure of. Every "href" is a "URL:" line from the sources. Every "image" is copied exactly from an "Image:" line: one Card for a single page's image (example 1), one Card per compared item that has one, up to 3 (example 2); a source without an "Image:" line gets no image. Leave "favicon" out. If the sources contain no URLs, leave out "references", "sources" and SourceLinks.
+Content: the user message starts with "Focus:" — build the page around it (empty focus: cover the whole source). Each source begins with "## <title>", "URL: <url>" and sometimes "Image: <url>", then its text; pages are separated by "<----- PAGE BREAK ---->". Keep every specific the reader came for (all ingredients and steps, every compared item's specs, price and rating); drop author backstory, marketing, SEO filler and subscribe or affiliate asides. Use only information present in the sources; invent no facts, numbers or URLs, and omit anything you are unsure of. Every "href" is a "URL:" line from the sources. Every "image" is copied exactly from an "Image:" line: one Card for a single page's image (example 1), one Card per compared item that has one, up to 3 (example 2); a source without an "Image:" line gets no image. Leave "favicon" out. If the sources contain no URLs, leave out "references" and "sources".
 
 Example content is illustrative; your page uses only the user's sources.
 
@@ -72,13 +71,12 @@ Example 3, a digest of several articles:
 
 {
   "components": [
-    { "id": "root", "component": "Page", "header": "hdr", "children": ["takeaways", "context", "srcs"] },
+    { "id": "root", "component": "Page", "header": "hdr", "children": ["takeaways", "context"] },
     { "id": "hdr", "component": "Header", "title": "EU AI Act: What Changes", "subhead": "Two explainers on the rollout.", "references": { "items": [ { "title": "European Commission", "href": "https://ec.europa.eu/ai-act" }, { "title": "Reuters", "href": "https://www.reuters.com/eu-ai-act" } ] } },
     { "id": "takeaways", "component": "Highlights", "title": "Key points", "items": [
       { "title": "Bans on unacceptable-risk systems apply first", "body": "Prohibited practices are enforceable six months after entry into force.", "sources": { "items": [ { "title": "European Commission", "href": "https://ec.europa.eu/ai-act" } ] } },
       { "title": "Fines reach 7% of global turnover", "body": "The top tier applies to prohibited uses.", "sources": { "items": [ { "title": "Reuters", "href": "https://www.reuters.com/eu-ai-act" } ] } } ] },
-    { "id": "context", "component": "TextBlock", "lead": "The Act sorts AI systems into four risk tiers.", "paragraphs": [ "Minimal-risk systems face no new duties; high-risk systems need a conformity assessment before sale." ] },
-    { "id": "srcs", "component": "SourceLinks", "title": "Sources", "items": [ { "title": "European Commission", "href": "https://ec.europa.eu/ai-act" }, { "title": "Reuters", "href": "https://www.reuters.com/eu-ai-act" } ] }
+    { "id": "context", "component": "TextBlock", "lead": "The Act sorts AI systems into four risk tiers.", "paragraphs": [ "Minimal-risk systems face no new duties; high-risk systems need a conformity assessment before sale." ] }
   ],
   "dataModel": {}
 }
