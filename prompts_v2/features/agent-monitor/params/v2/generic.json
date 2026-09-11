@@ -1,5 +1,5 @@
 {
-  "version": "2.1",
+  "version": "2.2",
   "is_default": false,
   "purpose": "monitor",
   "service_type": "agent",
@@ -7,7 +7,7 @@
     "temperature": 0.01
   },
   "modules": [
-    { "name": "system-instructions", "version": "2.1" },
+    { "name": "system-instructions", "version": "2.3" },
     { "name": "user-data", "version": "2.1" }
   ]
 }
