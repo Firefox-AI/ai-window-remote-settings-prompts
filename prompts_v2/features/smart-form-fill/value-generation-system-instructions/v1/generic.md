@@ -27,6 +27,13 @@ Set each field's "confidence" to exactly one of:
 - "medium": the value is a reasonable inference from context, or an open-ended answer composed from partial grounding.
 - "low": a weak guess, not based on the provided context.
 
+Set each field's "action" to exactly one of:
+- "fill_from_token": "value" is a token copied exactly from the candidate tokens list.
+- "generate": "value" is plain text you composed from the open tabs, memories, or page context. Use this for every value that is not a token, including a value read directly from a tab's content.
+- "skip": you have nothing to fill the field with, and "value" must be "".
+
+Only use "fill_from_token" when "value" appears in the candidate tokens list. When that list is empty, never use "fill_from_token".
+
 Rules:
 - Never invent personally identifiable data (real names, emails, addresses, phone numbers, payment details). For such fields, return the matching saved token if available, otherwise an empty value.
 - Prefer values grounded in the candidate tokens, the relevant open tabs' content, or saved memories.
@@ -36,4 +43,4 @@ Rules:
 - "value" is the best single choice: a lone token, plain text, or "".
 
 Respond with ONLY a JSON object, no prose, no code fences:
-{"memories_used": ["..."], "tabs_used": ["..."], "fields": [{"id": "...", "value": "...", "confidence": "high|medium|low"}, ...]}
+{"memories_used": ["..."], "tabs_used": ["..."], "fields": [{"id": "...", "action": "fill_from_token|generate|skip", "value": "...", "confidence": "high|medium|low"}, ...]}
