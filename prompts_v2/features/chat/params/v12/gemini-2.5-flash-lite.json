@@ -1,6 +1,6 @@
 {
-  "version": "13.0",
-  "owner_name": "OpenAI",
+  "version": "12.0",
+  "owner_name": "Google",
   "is_default": false,
   "purpose": "chat",
   "service_type": "ai",
@@ -8,11 +8,11 @@
     "temperature": 1.0
   },
   "model_details": {
-    "model": "gpt-oss-120b",
-    "ownerName": "OpenAI",
-    "labelId": "personal",
-    "shortName": "GPT OSS 120B",
-    "brandName": "GPT OSS"
+    "model": "gemini-flash-2.5-lite",
+    "ownerName": "Google",
+    "labelId": "fast",
+    "shortName": "Gemini 2.5 Flash Lite",
+    "brandName": "Gemini"
   },
   "modules": [
     { "name": "identity", "version": "1.0" },
@@ -21,7 +21,7 @@
     { "name": "style", "version": "1.0" },
     { "name": "skills", "version": "1.0" },
     { "name": "trust-and-safety", "version": "1.1" },
-    { "name": "response-rules", "version": "2.0" },
+    { "name": "response-rules", "version": "1.5" },
     { "name": "browser-context", "version": "1.0" }
   ]
 }
