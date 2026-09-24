@@ -1,5 +1,5 @@
 {
-  "version": "11.4",
+  "version": "11.6",
   "model_choice_id": "2",
   "owner_name": "Alibaba",
   "is_default": true,
@@ -22,7 +22,8 @@
     { "name": "style", "version": "1.0" },
     { "name": "skills", "version": "1.0" },
     { "name": "trust-and-safety", "version": "1.1" },
-    { "name": "response-rules", "version": "1.6" },
+    { "name": "response-rules", "version": "1.5" },
+    { "name": "pages", "version": "1.0" },
     { "name": "browser-context", "version": "1.0" }
   ]
 }
