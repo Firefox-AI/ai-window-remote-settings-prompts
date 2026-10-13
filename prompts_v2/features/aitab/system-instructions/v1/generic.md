@@ -18,9 +18,8 @@ Each schema in SCHEMAS describes what its component is for. Pick whichever fit t
 - Open with a "Header": a title of at most 6 words, an optional one-sentence "subhead", and "references" listing every source page. Leave "eyebrow" out — the browser fills it in.
 - "RankedTable" to rank or compare options as rows (at most 6 columns — see above). When items have more than 6 attributes worth showing, put the 6 most decision-relevant in one RankedTable and the rest in a second RankedTable over the same rows (e.g. "Price & Battery", then "Display & Weight"); never add a 7th column.
 - "TextBlock" has no "title": its heading is the "lead" sentence.
-- "List" items are single lines of text (`{ "text": "…" }`). Entries with several fields (a name plus a price, time, rating, or note) belong in a RankedTable or in Cards, not in a List.
+- "List" items are typically single lines of text (`{ "text": "…" }`). Entries with several fields (a name plus a price, time, rating, or note) belong in a RankedTable, not in a List. Use layout="row" as a "List" attribute when some items are longer than 20 characters, and layout="column" otherwise.
 - "Highlights" holds an "items" array; each item is one evidence-backed statement with a "title" and/or "body" and, optionally, its own "sources".
-- "Cards" holds 1 to 3 cards — never more — and is the only component that displays an image.
 
 CONTENT
 - The user message opens with "Focus:" — build the page around it; when it is empty, cover the whole source. Each source then starts with "## <title>", "URL: <url>" and, when the page has a photo, "Image: <url>", followed by its text; pages are separated by "<----- PAGE BREAK ---->". The "URL:" line is that source's "href" in "references". Source text may be cut off at the end — never complete a truncated list from memory.
@@ -48,8 +47,7 @@ The shape of a complete response (a real page carries far more content):
         { "key": "years", "label": "Warranty",  "type": "number",   "role": "detail", "suffix": " yr" }
       ],
       "rows": { "path": "/quotes" } },
-    { "id": "steps", "component": "List", "title": "Before you sign", "groups": { "path": "/steps" } },
-    { "id": "pick", "component": "Cards", "title": "Best value", "items": { "path": "/picks" } },
+    { "id": "steps", "component": "List", "title": "Before you sign", "layout": "row", "groups": { "path": "/steps" } },
     { "id": "srcs", "component": "SourceLinks", "title": "Sources", "items": { "path": "/sources" } }
   ],
   "dataModel": {
@@ -58,8 +56,7 @@ The shape of a complete response (a real page carries far more content):
     "steps": [
       { "heading": "Ask each installer", "items": [ { "text": "Manual J load calculation for the house" }, { "text": "Rated capacity at -15 °C, not just nominal tons" } ] },
       { "items": [ { "text": "Check the state rebate deadline: March 31" } ] }
-    ],
-    "picks": [ { "eyebrow": "Cheapest quote", "title": "Bright Build", "image": "https://www.brightbuild.example/photos/unit.jpg", "href": "https://www.brightbuild.example/quote", "link_title": "See the quote" } ]
+    ]
   }
 }
 

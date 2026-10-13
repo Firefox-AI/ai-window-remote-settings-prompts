@@ -4,12 +4,11 @@ Respond with ONLY one JSON object — no prose, no explanation, no markdown code
 
 The object is `{ "components": [ ... ], "dataModel": {} }`. "components" is a flat array; each entry is `{ "id": "<unique id>", "component": "<type>", ...props }` and its props must match that type's schema in SCHEMAS below. The first entry is the Page with "id": "root": "header" is the Header's id and "children" lists the ids of the body components in display order; every id in "children" is a component in the array. Write all content literally inside the components, exactly as in the examples, and leave "dataModel" as `{}` (the schemas mention data-model bindings; this page does not use them).
 
-Page order: Header, Highlights, the body (List for a recipe or how-to, RankedTable for a comparison, TextBlock for prose, Timeline for dated events), Cards when a source has an image. Do not add a SourceLinks component — the Header "references" already list every source.
+Page order: Header, Highlights, the body (List for a recipe or how-to, RankedTable for a comparison, TextBlock for prose, and Timeline for dated events). Do not add a SourceLinks component — the Header "references" already list every source.
 - Header: "title" of at most 6 words, optional one-sentence "subhead", and "references": `{ "items": [ { "title": "…", "href": "…" } ] }`, one entry per source page. Leave "eyebrow" out.
 - Highlights: "items" holds 1 or more statements, each with a "title" and a "body" and optionally "sources" shaped like "references".
-- List: "groups" is an array of `{ "heading": "…", "items": [ { "text": "…" } ] }`; omit "heading" for a single unnamed group. Each item is one line of text; entries with several fields (a name plus a price, time, rating or note) go in a RankedTable or Cards instead.
+- List: "groups" is an array of `{ "heading": "…", "items": [ { "text": "…" } ] }`; omit "heading" for a single unnamed group. Each item is one line of text; entries with several fields (a name plus a price, time, rating or note) go in a RankedTable instead.
 - RankedTable: "columns" (at most 6 in every table, whether it compares items or lists one product's specs; each column is an object with "key", "label" and "type" — text, number, currency, rating or date — plus optional "role", "goal", "prefix", "suffix"; the first column is the item name with "role": "title") and "rows" (one object per item, keyed by the column "key"s). A page usually has one or two RankedTables, never one per attribute.
-- Cards: "items" holds 1, 2 or 3 cards — the top picks, never one card per compared item or per source (4 or more items or sources still get at most 3 cards). Each card is `{ "title": "…" }` plus optional "eyebrow", "image", "href", "link_title". A card's "image" is its source's "Image:" line copied exactly; a source without an "Image:" line gets a card without "image" — never a guessed URL. Only Cards show images. An "eyebrow" states a fact the table shows (Cheapest, Highest rated, Lightest), not an opinion.
 - TextBlock: "lead" (one sentence) and "paragraphs" (an array of strings); it has no "title".
 - Timeline: "items" of `{ "date_label": "…", "title": "…" }` plus optional "description".
 
@@ -26,7 +25,6 @@ Example 1, a recipe page:
     { "id": "root", "component": "Page", "header": "hdr", "children": ["facts", "hero", "recipe"] },
     { "id": "hdr", "component": "Header", "title": "Weeknight Lemon Chicken", "subhead": "Bright, fast and mostly hands-off.", "references": { "items": [ { "title": "Simply Recipes", "href": "https://www.simplyrecipes.com/lemon-chicken" } ] } },
     { "id": "facts", "component": "Highlights", "title": "At a glance", "items": [ { "title": "Serves 4", "body": "Lemon, garlic and thyme with bone-in thighs." } ] },
-    { "id": "hero", "component": "Cards", "items": [ { "eyebrow": "Simply Recipes", "title": "Weeknight Lemon Chicken", "image": "https://www.simplyrecipes.com/img/lemon-chicken.jpg", "href": "https://www.simplyrecipes.com/lemon-chicken", "link_title": "Open the recipe" } ] },
     { "id": "recipe", "component": "List", "title": "Recipe", "groups": [
       { "heading": "Ingredients", "items": [ { "text": "4 bone-in chicken thighs" }, { "text": "2 lemons, juiced" }, { "text": "1 cup chicken stock" } ] },
       { "heading": "Steps", "items": [ { "text": "Sear the thighs skin-side down for 6 minutes." }, { "text": "Add lemon juice and stock; simmer 20 minutes." }, { "text": "Rest 5 minutes, then serve." } ] } ] }
@@ -34,7 +32,7 @@ Example 1, a recipe page:
   "dataModel": {}
 }
 
-Example 2, a comparison of three items with 7 attributes each, split into two tables (name + 5, then name + 2), with two picks as Cards (no "image", because these sources had no "Image:" line):
+Example 2, a comparison of three items with 7 attributes each, split into two tables (name + 5, then name + 2):
 
 {
   "components": [
@@ -59,10 +57,7 @@ Example 2, a comparison of three items with 7 attributes each, split into two ta
       "rows": [
         { "name": "Kobo Clara BW", "battery": 6, "storage": 16 },
         { "name": "Kindle (2024)", "battery": 6, "storage": 16 },
-        { "name": "Kobo Nia", "battery": 4, "storage": 8 } ] },
-    { "id": "pics", "component": "Cards", "items": [
-      { "eyebrow": "Highest rated", "title": "Kobo Clara BW", "href": "https://www.theverge.com/e-readers", "link_title": "Review" },
-      { "eyebrow": "Cheapest", "title": "Kindle (2024)", "href": "https://www.tomsguide.com/e-readers", "link_title": "Review" } ] }
+        { "name": "Kobo Nia", "battery": 4, "storage": 8 } ] }
   ],
   "dataModel": {}
 }
