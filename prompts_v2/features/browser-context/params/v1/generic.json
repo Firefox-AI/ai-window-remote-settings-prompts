@@ -1,0 +1,8 @@
+{
+  "version": "1.0",
+  "is_default": true,
+  "modules": [
+    { "name": "tab-conditional-fields", "version": "1.0" },
+    { "name": "mentions", "version": "1.0" }
+  ]
+}

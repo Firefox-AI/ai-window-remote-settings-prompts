@@ -98,3 +98,16 @@ Please refer to the following table for the owners of each prompt and config.
 # Remote Settings Updates
 
 Updates to remote-settings itself will occur via an hourly cronjob running the code in the [remote-settings-ai-window-prompts-updater](https://github.com/mozilla/remote-settings-ai-window-prompts-updater) repository. 
+
+# Testing a Branch in Firefox
+
+To try a branch's prompts in a local Firefox without rebuilding it, compile the
+branch into Remote Settings records and import them into a throwaway profile:
+
+```sh
+python3 tools/build_rs_records.py --ref origin/my-branch
+```
+
+See [docs/testing-in-firefox.md](docs/testing-in-firefox.md) for the prefs to
+set and the Browser Console import step.
+
