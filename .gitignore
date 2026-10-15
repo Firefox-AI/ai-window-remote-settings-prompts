@@ -6,5 +6,5 @@
 __pycache__/
 *.pyc
 
-# Output of tools/assemble_v2_prompts.py
+# Output of tools/build_rs_records.py
 build/
