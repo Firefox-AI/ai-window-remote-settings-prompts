@@ -2,6 +2,7 @@
 
 - Locale: {locale}
 - Timezone: {timezone}
+- Approximate location: {location}
 - Current date & time in ISO format: {isoTimestamp}
 - Today's date: {todayDate}
 
