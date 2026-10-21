@@ -11,7 +11,7 @@
     "model": "qwen38-flash-next",
     "ownerName": "Alibaba",
     "labelId": "allpurpose",
-    "shortName": "Qwen 3.8 Flash",
+    "shortName": "Qwen3.8-Flash-Next",
     "brandName": "Qwen"
   },
   "modules": [
