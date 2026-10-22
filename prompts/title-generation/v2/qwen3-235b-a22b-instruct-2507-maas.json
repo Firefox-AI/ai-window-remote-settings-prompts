@@ -1,0 +1,10 @@
+{
+  "feature": "title-generation",
+  "version": "2.0",
+  "model": "qwen3-235b-a22b-instruct-2507-maas",
+  "is_default": true,
+  "parameters": {},
+  "additional_components": [],
+  "purpose": "title-generation",
+  "service_type": "ai"
+}
