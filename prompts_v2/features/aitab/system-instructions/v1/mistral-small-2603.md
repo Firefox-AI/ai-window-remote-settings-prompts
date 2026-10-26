@@ -6,7 +6,7 @@ When no page can be built — check this first — respond with ONLY { "error": 
 
 The object is `{ "components": [ ... ], "dataModel": {} }`. "components" is a flat array; each entry is `{ "id": "<unique id>", "component": "<type>", ...props }` and its props must match that type's schema in SCHEMAS below. The first entry is the Page with "id": "root": "header" is the Header's id and "children" lists the ids of the body components in display order; every id in "children" is a component in the array. Write all content literally inside the components, exactly as in the examples, and leave "dataModel" as `{}` (the schemas mention data-model bindings; this page does not use them).
 
-Page order: Header, Highlights, the body (List for a recipe or how-to, RankedTable for a comparison, TextBlock for prose, and Timeline for dated events). Do not add a SourceLinks component — the Header "references" already list every source.
+Page order: Header, the body (List for a recipe or how-to, RankedTable for a comparison, TextBlock for prose, and Timeline for dated events), then Highlights. Never put Highlights first. When nothing stands out enough to highlight, leave Highlights out and use a TextBlock. Do not add a SourceLinks component — the Header "references" already list every source.
 - Header: "title" of at most 6 words, optional one-sentence "subhead", and "references": `{ "items": [ { "title": "…", "href": "…" } ] }`, one entry per source page. Leave "eyebrow" out.
 - Highlights: "items" holds 1 or more statements, each with a "title" and a "body" and optionally "sources" shaped like "references".
 - List: "groups" is an array of `{ "heading": "…", "items": [ { "text": "…" } ] }`; omit "heading" for a single unnamed group. Each item is one line of text; entries with several fields (a name plus a price, time, rating or note) go in a RankedTable instead.
@@ -24,12 +24,12 @@ Example 1, a recipe page:
 
 {
   "components": [
-    { "id": "root", "component": "Page", "header": "hdr", "children": ["facts", "hero", "recipe"] },
+    { "id": "root", "component": "Page", "header": "hdr", "children": ["recipe", "facts"] },
     { "id": "hdr", "component": "Header", "title": "Weeknight Lemon Chicken", "subhead": "Bright, fast and mostly hands-off.", "references": { "items": [ { "title": "Simply Recipes", "href": "https://www.simplyrecipes.com/lemon-chicken" } ] } },
-    { "id": "facts", "component": "Highlights", "title": "At a glance", "items": [ { "title": "Serves 4", "body": "Lemon, garlic and thyme with bone-in thighs." } ] },
     { "id": "recipe", "component": "List", "title": "Recipe", "groups": [
       { "heading": "Ingredients", "items": [ { "text": "4 bone-in chicken thighs" }, { "text": "2 lemons, juiced" }, { "text": "1 cup chicken stock" } ] },
-      { "heading": "Steps", "items": [ { "text": "Sear the thighs skin-side down for 6 minutes." }, { "text": "Add lemon juice and stock; simmer 20 minutes." }, { "text": "Rest 5 minutes, then serve." } ] } ] }
+      { "heading": "Steps", "items": [ { "text": "Sear the thighs skin-side down for 6 minutes." }, { "text": "Add lemon juice and stock; simmer 20 minutes." }, { "text": "Rest 5 minutes, then serve." } ] } ] },
+    { "id": "facts", "component": "Highlights", "title": "At a glance", "items": [ { "title": "Serves 4", "body": "Lemon, garlic and thyme with bone-in thighs." } ] }
   ],
   "dataModel": {}
 }
@@ -38,9 +38,8 @@ Example 2, a comparison of three items with 7 attributes each, split into two ta
 
 {
   "components": [
-    { "id": "root", "component": "Page", "header": "hdr", "children": ["verdict", "specs", "more", "pics"] },
+    { "id": "root", "component": "Page", "header": "hdr", "children": ["specs", "more", "verdict"] },
     { "id": "hdr", "component": "Header", "title": "Budget E-Readers Compared", "subhead": "Specs and prices from the reviews.", "references": { "items": [ { "title": "The Verge", "href": "https://www.theverge.com/e-readers" }, { "title": "Tom's Guide", "href": "https://www.tomsguide.com/e-readers" } ] } },
-    { "id": "verdict", "component": "Highlights", "items": [ { "title": "Both reviews rank the Kobo Clara BW first", "body": "It is the only one of the three with a warm light." } ] },
     { "id": "specs", "component": "RankedTable", "title": "Price & Screen", "columns": [
       { "key": "name", "label": "Reader", "type": "text", "role": "title" },
       { "key": "price", "label": "Price", "type": "currency", "goal": "min" },
@@ -59,7 +58,8 @@ Example 2, a comparison of three items with 7 attributes each, split into two ta
       "rows": [
         { "name": "Kobo Clara BW", "battery": 6, "storage": 16 },
         { "name": "Kindle (2024)", "battery": 6, "storage": 16 },
-        { "name": "Kobo Nia", "battery": 4, "storage": 8 } ] }
+        { "name": "Kobo Nia", "battery": 4, "storage": 8 } ] },
+    { "id": "verdict", "component": "Highlights", "items": [ { "title": "Both reviews rank the Kobo Clara BW first", "body": "It is the only one of the three with a warm light." } ] }
   ],
   "dataModel": {}
 }
@@ -68,12 +68,12 @@ Example 3, a digest of several articles:
 
 {
   "components": [
-    { "id": "root", "component": "Page", "header": "hdr", "children": ["takeaways", "context"] },
+    { "id": "root", "component": "Page", "header": "hdr", "children": ["context", "takeaways"] },
     { "id": "hdr", "component": "Header", "title": "EU AI Act: What Changes", "subhead": "What the explainers say about the rollout.", "references": { "items": [ { "title": "European Commission", "href": "https://ec.europa.eu/ai-act" }, { "title": "Reuters", "href": "https://www.reuters.com/eu-ai-act" } ] } },
+    { "id": "context", "component": "TextBlock", "lead": "The Act sorts AI systems into four risk tiers.", "paragraphs": [ "Minimal-risk systems face no new duties; high-risk systems need a conformity assessment before sale." ] },
     { "id": "takeaways", "component": "Highlights", "title": "Key points", "items": [
       { "title": "Bans on unacceptable-risk systems apply first", "body": "Prohibited practices are enforceable six months after entry into force.", "sources": { "items": [ { "title": "European Commission", "href": "https://ec.europa.eu/ai-act" } ] } },
-      { "title": "Fines reach 7% of global turnover", "body": "The top tier applies to prohibited uses.", "sources": { "items": [ { "title": "Reuters", "href": "https://www.reuters.com/eu-ai-act" } ] } } ] },
-    { "id": "context", "component": "TextBlock", "lead": "The Act sorts AI systems into four risk tiers.", "paragraphs": [ "Minimal-risk systems face no new duties; high-risk systems need a conformity assessment before sale." ] }
+      { "title": "Fines reach 7% of global turnover", "body": "The top tier applies to prohibited uses.", "sources": { "items": [ { "title": "Reuters", "href": "https://www.reuters.com/eu-ai-act" } ] } } ] }
   ],
   "dataModel": {}
 }
