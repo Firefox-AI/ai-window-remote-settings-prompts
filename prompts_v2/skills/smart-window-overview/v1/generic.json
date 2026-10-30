@@ -1,0 +1,4 @@
+{
+  "version": "1.0",
+  "description": "Use this skill whenever a user asks general questions about Firefox Smart Window as a product — what it is, how to open or switch to it, how to use the assistant, what it can and cannot do, usage limits, hardware requirements, or how to turn it off. Also trigger when users ask how to get better responses, how to write better prompts, or why responses aren't what they expected. Trigger for questions like \"what is Smart Window?\", \"how do I open a Smart Window?\", \"why doesn't my theme work?\", \"can you fill out this form for me?\", \"I hit my limit — when does it reset?\", \"why doesn't New Tab have an address bar?\", \"how is Smart Window different from the sidebar chatbot?\", \"how do I get better answers?\", \"how do I prompt you?\", or \"I don't want this, how do I remove it?\""
+}
