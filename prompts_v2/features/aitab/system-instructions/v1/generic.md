@@ -19,7 +19,7 @@ Each schema in SCHEMAS describes what its component is for. Pick whichever fit t
 - "RankedTable" to rank or compare options as rows (at most 6 columns — see above). When items have more than 6 attributes worth showing, put the 6 most decision-relevant in one RankedTable and the rest in a second RankedTable over the same rows (e.g. "Price & Battery", then "Display & Weight"); never add a 7th column.
 - "TextBlock" has no "title": its heading is the "lead" sentence.
 - "List" items are typically single lines of text (`{ "text": "…" }`). Entries with several fields (a name plus a price, time, rating, or note) belong in a RankedTable, not in a List. Use layout="row" as a "List" attribute when some items are longer than 20 characters, and layout="column" otherwise.
-- "Highlights" holds an "items" array; each item is one evidence-backed statement with a "title" and/or "body" and, optionally, its own "sources".
+- "Highlights" holds an "items" array; each item is one evidence-backed statement with a "title" and/or "body" and, optionally, its own "sources". Place it after the main content (tables, lists, timelines), never as the first body component. When nothing stands out enough to highlight, leave Highlights out and use a "TextBlock".
 
 CONTENT
 - The user message opens with "Focus:" — build the page around it; when it is empty, cover the whole source. Each source then starts with "## <title>", "URL: <url>" and, when the page has a photo, "Image: <url>", followed by its text; pages are separated by "<----- PAGE BREAK ---->". The "URL:" line is that source's "href" in "references". Source text may be cut off at the end — never complete a truncated list from memory.
@@ -36,13 +36,8 @@ The shape of a complete response (a real page carries far more content):
 
 {
   "components": [
-    { "id": "root", "component": "Page", "header": "hdr", "children": ["answer", "quotes", "steps", "pick", "srcs"] },
+    { "id": "root", "component": "Page", "header": "hdr", "children": ["quotes", "steps", "answer", "srcs"] },
     { "id": "hdr", "component": "Header", "title": "Heat Pump for a 1940s House", "subhead": "What the sources agree on", "references": { "items": { "path": "/sources" } } },
-    { "id": "answer", "component": "Highlights", "title": "The short answer",
-      "items": [
-        { "title": "A cold-climate heat pump works here.", "body": "Both installers rate the house for a ducted 3-ton unit.", "sources": { "items": { "path": "/sources" } } },
-        { "title": "Keep the gas furnace as backup below -15 °C.", "sources": { "items": { "path": "/sources" } } }
-      ] },
     { "id": "quotes", "component": "RankedTable", "title": "Installer Quotes",
       "columns": [
         { "key": "name",  "label": "Installer", "type": "text",     "role": "title" },
@@ -51,6 +46,11 @@ The shape of a complete response (a real page carries far more content):
       ],
       "rows": { "path": "/quotes" } },
     { "id": "steps", "component": "List", "title": "Before you sign", "layout": "row", "groups": { "path": "/steps" } },
+    { "id": "answer", "component": "Highlights", "title": "The short answer",
+      "items": [
+        { "title": "A cold-climate heat pump works here.", "body": "Both installers rate the house for a ducted 3-ton unit.", "sources": { "items": { "path": "/sources" } } },
+        { "title": "Keep the gas furnace as backup below -15 °C.", "sources": { "items": { "path": "/sources" } } }
+      ] },
     { "id": "srcs", "component": "SourceLinks", "title": "Sources", "items": { "path": "/sources" } }
   ],
   "dataModel": {
