@@ -1,7 +1,8 @@
 {
-  "version": "11.4",
+  "version": "11.5",
+  "model_choice_id": "2",
   "owner_name": "Alibaba",
-  "is_default": false,
+  "is_default": true,
   "purpose": "chat",
   "service_type": "ai",
   "parameters": {
