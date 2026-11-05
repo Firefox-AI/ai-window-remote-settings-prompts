@@ -1,7 +1,7 @@
 {
-  "version": "12.5",
+  "version": "12.2",
   "model_choice_id": "4",
-  "inference_model": "qwen38-flash-next",
+  "inference_model": "qwen3-235b-a22b-instruct-2507-maas",
   "owner_name": "AutoModel",
   "is_default": true,
   "purpose": "chat",
@@ -10,10 +10,10 @@
     "temperature": 1.0
   },
   "model_details": {
-    "model": "qwen38-flash-next",
+    "model": "qwen3-235b-a22b-instruct-2507-maas",
     "ownerName": "Alibaba",
     "labelId": "allpurpose",
-    "shortName": "Qwen3.8-Flash-Next",
+    "shortName": "Qwen 3 235B",
     "brandName": "Qwen"
   },
   "modules": [
@@ -24,7 +24,7 @@
     { "name": "skills", "version": "1.0" },
     { "name": "trust-and-safety", "version": "1.1" },
     { "name": "response-rules", "version": "1.5" },
-    { "name": "pages", "version": "1.4" },
+    { "name": "pages", "version": "1.2" },
     { "name": "browser-context", "version": "1.2" }
   ]
 }
