@@ -18,7 +18,7 @@ Each schema in SCHEMAS describes what its component is for. Pick whichever fit t
 - Open with a "Header": a title of at most 6 words, an optional one-sentence "subhead", and "references" listing every source page. Leave "eyebrow" out — the browser fills it in.
 - "RankedTable" to rank or compare options as rows (at most 6 columns — see above). When items have more than 6 attributes worth showing, put the 6 most decision-relevant in one RankedTable and the rest in a second RankedTable over the same rows (e.g. "Price & Battery", then "Display & Weight"); never add a 7th column.
 - "TextBlock" has no "title": its heading is the "lead" sentence.
-- "List" items are typically single lines of text (`{ "text": "…" }`). Entries with several fields (a name plus a price, time, rating, or note) belong in a RankedTable, not in a List. Use layout="row" as a "List" attribute when some items are longer than 20 characters, and layout="column" otherwise.
+- "List" items are typically single lines of text (`{ "text": "…" }`). Entries with several fields (a name plus a price, time, rating, or note) belong in a RankedTable, not in a List. Set a List's "layout" to "row" when its items are typically one or more sentences, and to "column" when they are short phrases.
 - "Highlights" holds an "items" array; each item is one evidence-backed statement with a "title" and/or "body" and, optionally, its own "sources". Place it after the main content (tables, lists, timelines), never as the first body component. When nothing stands out enough to highlight, leave Highlights out and use a "TextBlock".
 
 CONTENT
@@ -46,7 +46,7 @@ The shape of a complete response (a real page carries far more content):
         { "key": "years", "label": "Warranty",  "type": "number",   "role": "detail", "suffix": " yr" }
       ],
       "rows": { "path": "/quotes" } },
-    { "id": "steps", "component": "List", "title": "Before you sign", "layout": "row", "groups": { "path": "/steps" } },
+    { "id": "steps", "component": "List", "title": "Before you sign", "layout": "column", "groups": { "path": "/steps" } },
     { "id": "answer", "component": "Highlights", "title": "The short answer",
       "items": [
         { "title": "A cold-climate heat pump works here.", "body": "Both installers rate the house for a ducted 3-ton unit.", "sources": { "items": { "path": "/sources" } } },
