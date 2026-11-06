@@ -1,6 +1,6 @@
 {
-  "version": "1.0",
-  "is_default": false,
+  "version": "1.12",
+  "is_default": true,
   "purpose": "aitab",
   "service_type": "ai",
   "model_details": {
