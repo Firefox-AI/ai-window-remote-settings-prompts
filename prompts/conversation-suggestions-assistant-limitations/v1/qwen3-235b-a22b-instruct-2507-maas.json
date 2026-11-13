@@ -1,10 +1,10 @@
 {
   "feature": "conversation-suggestions-assistant-limitations",
-  "version": "1.2",
+  "version": "1.3",
   "model": "qwen3-235b-a22b-instruct-2507-maas",
   "is_default": true,
   "parameters": {},
   "additional_components": [],
   "purpose": "convo-starters-sidebar",
-  "service_type": "ai"
+  "service_type": "convo-starters"
 }
