@@ -24,4 +24,4 @@
 {pageText}
 </page_text>
 {/pageText}
-Language for the title and the condition: {#chatHistory}the language of the user's own messages in the recent chat, or if they wrote none, {/chatHistory}{language}. The language of the pages does not decide it.
+Language for the title and the condition: the language of the user's own messages in the recent chat. If there are no such messages, it is {language}. The language of the pages does not decide it.
