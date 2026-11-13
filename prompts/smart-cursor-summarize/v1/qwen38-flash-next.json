@@ -1,0 +1,8 @@
+{
+  "feature": "smart-cursor-summarize",
+  "version": "1.0",
+  "model": "qwen38-flash-next",
+  "is_default": true,
+  "parameters": {},
+  "additional_components": []
+}
