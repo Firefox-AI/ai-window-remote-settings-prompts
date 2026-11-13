@@ -1,0 +1,10 @@
+{
+  "feature": "title-generation",
+  "version": "2.1",
+  "model": "qwen38-flash-next",
+  "is_default": true,
+  "parameters": {},
+  "additional_components": [],
+  "purpose": "title-generation",
+  "service_type": "ai"
+}
