@@ -1,5 +1,5 @@
 {
-  "version": "12.4",
+  "version": "12.5",
   "model_choice_id": "3",
   "owner_name": "Mistral",
   "is_default": false,
@@ -25,6 +25,6 @@
     { "name": "trust-and-safety", "version": "1.1" },
     { "name": "response-rules", "version": "1.5" },
     { "name": "pages", "version": "1.4" },
-    { "name": "browser-context", "version": "1.2" }
+    { "name": "browser-context", "version": "1.3" }
   ]
 }

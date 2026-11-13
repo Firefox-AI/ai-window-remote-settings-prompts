@@ -1,5 +1,5 @@
 {
-  "version": "12.5",
+  "version": "12.6",
   "model_choice_id": "4",
   "inference_model": "qwen38-flash-next",
   "owner_name": "AutoModel",
@@ -25,6 +25,6 @@
     { "name": "trust-and-safety", "version": "1.1" },
     { "name": "response-rules", "version": "1.5" },
     { "name": "pages", "version": "1.4" },
-    { "name": "browser-context", "version": "1.2" }
+    { "name": "browser-context", "version": "1.3" }
   ]
 }
