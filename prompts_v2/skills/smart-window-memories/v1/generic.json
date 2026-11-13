@@ -1,0 +1,4 @@
+{
+  "version": "1.0",
+  "description": "Use this skill whenever a user asks about memories in Firefox Smart Window. Trigger when users ask what memories are, how memories are created or updated, how to view or delete memories, how to turn memories on or off, whether memories are private, whether memories are synced across devices, why they see a memories icon on a response, how to disable memories for a single chat, or anything about Smart Window learning from their activity. Also trigger for questions like \"does Firefox remember my browsing?\", \"how do I stop it from learning about me?\", \"can I see what it knows about me?\", or \"I deleted my history — are my memories gone too?\""
+}
