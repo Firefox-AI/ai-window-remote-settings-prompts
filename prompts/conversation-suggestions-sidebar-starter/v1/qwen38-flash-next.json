@@ -1,0 +1,10 @@
+{
+  "feature": "conversation-suggestions-sidebar-starter",
+  "version": "1.4",
+  "model": "qwen38-flash-next",
+  "is_default": true,
+  "parameters": {},
+  "additional_components": ["conversation-suggestions-assistant-limitations", "conversation-suggestions-memories"],
+  "purpose": "convo-starters-sidebar",
+  "service_type": "convo-starters"
+}

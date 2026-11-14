@@ -1,0 +1,13 @@
+{
+ "feature": "memories-message-classification-system",
+ "version": "1.2",
+ "model": "qwen38-flash-next",
+ "is_default": true,
+ "parameters": {},
+ "additional_components": [
+   "memories-message-classification-user",
+   "memories-relevant-context"
+ ],
+ "purpose": "memory-generation",
+ "service_type": "memories"
+}
