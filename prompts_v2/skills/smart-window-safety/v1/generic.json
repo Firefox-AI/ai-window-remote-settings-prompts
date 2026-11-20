@@ -1,0 +1,4 @@
+{
+  "version": "1.0",
+  "description": "Use this skill whenever a user asks about safety, privacy, or data handling in Firefox Smart Window. Trigger when users ask whether Smart Window is safe, whether their data is private, what Mozilla does with their information, whether AI responses can be wrong or harmful, how Mozilla protects against bad outputs, what a prompt injection attack is, whether their conversations are stored or shared, or how to report a bad response. Also trigger for questions like \"is this trustworthy?\", \"can the AI lie to me?\", \"does Mozilla train on my data?\", \"who can see my chats?\", or \"why did it give me a weird response?\""
+}
